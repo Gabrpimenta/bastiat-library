@@ -1,3 +1,4 @@
+import { s as layout } from '../../src/components/ui';
 import { MotionPressable } from '../../src/components/motion';
 import { useEffect } from 'react';
 import { View, ScrollView, StyleSheet, RefreshControl } from 'react-native';
@@ -42,7 +43,7 @@ export default function HomeScreen() {
     <SafeAreaView edges={['top']} style={{ flex: 1 }}>
       <Header />
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 110 }}
+        contentContainerStyle={[layout.page, { paddingBottom: 110 }]}
         refreshControl={
           <RefreshControl
             refreshing={isRefetching}
@@ -98,7 +99,10 @@ export default function HomeScreen() {
               >
                 <Artwork
                   uri={data.featuredCourse.coverUrl}
-                  style={{ aspectRatio: undefined, height: 320 }}
+                  style={[
+                    StyleSheet.absoluteFill,
+                    { width: '100%', height: '100%', aspectRatio: undefined },
+                  ]}
                 />
                 <LinearGradient
                   colors={['transparent', '#0C1A21EE']}
@@ -110,7 +114,7 @@ export default function HomeScreen() {
                   </View>
                   <Txt style={styles.heroTitle}>The Seen{`\n`}and the Unseen</Txt>
                   <View style={styles.heroBottom}>
-                    <View style={{ gap: 4 }}>
+                    <View style={{ flex: 1, gap: 4 }}>
                       <Txt style={{ color: '#D2D6CE', fontSize: 12 }}>
                         {data.featuredCourse.lessonCount} lessons ·{' '}
                         {durationLabel(data.featuredCourse.durationSeconds)}
@@ -163,13 +167,15 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   intro: { paddingHorizontal: 24, paddingTop: 26, paddingBottom: 23, gap: 10 },
   hero: {
-    marginHorizontal: 22,
+    minHeight: 320,
+    justifyContent: 'flex-end',
+    marginHorizontal: 24,
     borderRadius: 10,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: c.border,
   },
-  heroCopy: { position: 'absolute', left: 24, right: 24, bottom: 22 },
+  heroCopy: { paddingHorizontal: 24, paddingBottom: 22, paddingTop: 90 },
   badge: {
     alignSelf: 'flex-start',
     backgroundColor: '#16282BCC',
@@ -185,6 +191,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 12,
+    gap: 12,
   },
   heroArrow: {
     width: 44,
@@ -204,7 +211,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: c.border,
   },
-  noteText: { fontSize: 12, color: c.muted },
+  noteText: { flex: 1, fontSize: 12, color: c.muted },
   section: { paddingHorizontal: 24, marginTop: 28 },
   continue: {
     flexDirection: 'row',
@@ -214,7 +221,7 @@ const styles = StyleSheet.create({
     borderColor: c.border,
     borderRadius: 8,
     padding: 17,
-    marginHorizontal: 22,
+    marginHorizontal: 24,
     marginBottom: 24,
   },
   quote: {

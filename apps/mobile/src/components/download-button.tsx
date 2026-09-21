@@ -36,6 +36,8 @@ export function DownloadButton({ lesson }: { lesson: Lesson }) {
           justifyContent: 'center',
           gap: 10,
           minHeight: 49,
+          paddingHorizontal: 16,
+          paddingVertical: 10,
           borderWidth: 1,
           borderColor: ready ? c.sage : active ? c.copper : c.border,
           borderRadius: 6,
@@ -48,7 +50,16 @@ export function DownloadButton({ lesson }: { lesson: Lesson }) {
         ) : (
           <Download size={18} color={c.muted} />
         )}
-        <Txt style={{ fontSize: 13, color: ready ? c.sage : c.muted }}>{label}</Txt>
+        <Txt
+          style={{
+            flexShrink: 1,
+            textAlign: 'center',
+            fontSize: 13,
+            color: ready ? c.sage : c.muted,
+          }}
+        >
+          {label}
+        </Txt>
       </MotionPressable>
       {active && (
         <View style={{ marginTop: 7 }}>

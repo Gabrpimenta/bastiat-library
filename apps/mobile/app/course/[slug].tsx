@@ -1,4 +1,5 @@
-import { ScrollView, View, Pressable, StyleSheet } from 'react-native';
+import { s as layout } from '../../src/components/ui';
+import { ScrollView, View, Pressable, StyleSheet, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
@@ -25,6 +26,7 @@ import {
 } from '../../src/components/ui';
 
 export default function CourseScreen() {
+  const { fontScale } = useWindowDimensions();
   const { slug } = useLocalSearchParams<{ slug: string }>();
   const lib = useLibrary();
   const result = useQuery({
@@ -44,9 +46,11 @@ export default function CourseScreen() {
     (lesson) => (lib.progress(lesson.slug)?.value.positionSeconds ?? 0) > 0,
   );
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+    <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
       <BackBar />
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 130 }}>
+      <ScrollView
+        contentContainerStyle={[layout.page, { paddingHorizontal: 24, paddingBottom: 130 }]}
+      >
         {result.error ? (
           <ErrorView
             message={result.error.message}
@@ -88,7 +92,7 @@ export default function CourseScreen() {
               <SaveButton item={course} />
             </View>
             <View style={styles.panel}>
-              <View style={styles.panelHeading}>
+              <View style={[styles.panelHeading, fontScale > 1.5 && styles.panelHeadingLarge]}>
                 <Txt style={styles.panelTitle}>Your learning path</Txt>
                 <Txt style={{ fontSize: 11, color: c.muted }}>
                   {completed}/{course.lessonCount}
@@ -153,8 +157,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 19,
+    gap: 12,
   },
-  panelTitle: { fontFamily: type.display, fontSize: 22, lineHeight: 30 },
+  panelHeadingLarge: { flexDirection: 'column', alignItems: 'flex-start', gap: 8 },
+  panelTitle: { flexShrink: 1, fontFamily: type.display, fontSize: 22, lineHeight: 30 },
   lessonRow: {
     flexDirection: 'row',
     alignItems: 'center',

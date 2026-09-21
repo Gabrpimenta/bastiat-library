@@ -1,6 +1,9 @@
 appId: com.gabrielpimenta.bastiatlibrary
 ---
 - launchApp
+- extendedWaitUntil:
+    visible: Bastiat Library home
+    timeout: 30000
 - openLink: bastiat://lesson/thinking-in-alternatives
 - tapOn:
     text: Open

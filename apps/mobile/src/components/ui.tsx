@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   ActivityIndicator,
+  useWindowDimensions,
   type TextProps,
   type StyleProp,
 } from 'react-native';
@@ -40,9 +41,20 @@ export function Txt({ style, ...props }: TextProps) {
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return <Txt style={s.eyebrow}>{children}</Txt>;
 }
-export function Title({ children, small = false }: { children: React.ReactNode; small?: boolean }) {
+export function Title({
+  children,
+  small = false,
+  style,
+}: {
+  children: React.ReactNode;
+  small?: boolean;
+  style?: TextProps['style'];
+}) {
   return (
-    <Txt accessibilityRole="header" style={[s.title, small && { fontSize: 29, lineHeight: 38 }]}>
+    <Txt
+      accessibilityRole="header"
+      style={[s.title, small && { fontSize: 29, lineHeight: 38 }, style]}
+    >
       {children}
     </Txt>
   );
@@ -137,7 +149,7 @@ export function BackBar({ label = 'The collection' }: { label?: string }) {
         accessibilityLabel="Go back"
       >
         <ArrowLeft size={21} color={c.text} />
-        <Txt style={{ color: c.muted, fontSize: 13 }}>{label}</Txt>
+        <Txt style={{ flex: 1, color: c.muted, fontSize: 13 }}>{label}</Txt>
       </Pressable>
     </View>
   );
@@ -197,8 +209,9 @@ export function openContent(item: Content) {
     router.push({ pathname: '/reading/[slug]', params: { slug: item.slug } });
 }
 export function ContentCard({ item, horizontal = false }: { item: Content; horizontal?: boolean }) {
+  const { width } = useWindowDimensions();
   return (
-    <View style={[s.card, horizontal && { width: 280 }]}>
+    <View style={[s.card, horizontal && { width: Math.min(280, width - 48) }]}>
       <MotionPressable
         feedback="highlight"
         onPress={() => openContent(item)}
@@ -226,7 +239,7 @@ export function ContentCard({ item, horizontal = false }: { item: Content; horiz
         </View>
       </MotionPressable>
       <View style={s.cardMeta}>
-        <Txt style={{ fontSize: 12, color: c.muted }}>{contentLabel(item)}</Txt>
+        <Txt style={{ flex: 1, fontSize: 12, color: c.muted }}>{contentLabel(item)}</Txt>
         <SaveButton item={item} />
       </View>
     </View>
@@ -306,7 +319,9 @@ export function Empty({ title, description }: { title: string; description: stri
   return (
     <View style={s.empty}>
       <Bookmark size={38} color={c.copper} strokeWidth={1.1} />
-      <Title small>{title}</Title>
+      <Title small style={{ textAlign: 'center' }}>
+        {title}
+      </Title>
       <Txt style={[s.description, { textAlign: 'center', marginBottom: 14 }]}>{description}</Txt>
       <Button onPress={() => router.navigate('/(tabs)/explore')}>Explore the library</Button>
     </View>
@@ -315,7 +330,9 @@ export function Empty({ title, description }: { title: string; description: stri
 export function ErrorView({ message, retry }: { message: string; retry(): void }) {
   return (
     <View style={s.empty}>
-      <Title small>Let’s try that again.</Title>
+      <Title small style={{ textAlign: 'center' }}>
+        Let’s try that again.
+      </Title>
       <Txt
         selectable
         accessibilityRole="alert"
@@ -346,6 +363,7 @@ export function ProgressBar({ value }: { value: number }) {
   );
 }
 export const s = StyleSheet.create({
+  page: { width: '100%', maxWidth: 720, alignSelf: 'center' },
   text: { fontFamily: type.body, color: c.text, fontSize: 16, lineHeight: 24 },
   title: {
     fontFamily: type.display,
@@ -363,7 +381,10 @@ export const s = StyleSheet.create({
     textTransform: 'uppercase',
   },
   header: {
-    paddingHorizontal: 22,
+    width: '100%',
+    maxWidth: 720,
+    alignSelf: 'center',
+    paddingHorizontal: 24,
     paddingTop: 9,
     paddingBottom: 17,
     flexDirection: 'row',
@@ -395,8 +416,14 @@ export const s = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonSecondary: { backgroundColor: 'transparent', borderColor: c.border },
-  buttonText: { fontFamily: type.bold, color: '#142126', fontSize: 14 },
-  backBar: { paddingHorizontal: 15, paddingVertical: 8 },
+  buttonText: { fontFamily: type.bold, color: '#142126', fontSize: 14, textAlign: 'center' },
+  backBar: {
+    width: '100%',
+    maxWidth: 720,
+    alignSelf: 'center',
+    paddingHorizontal: 17,
+    paddingVertical: 8,
+  },
   backButton: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -453,8 +480,8 @@ export const s = StyleSheet.create({
   empty: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 30,
-    paddingVertical: 55,
+    paddingHorizontal: 12,
+    paddingVertical: 40,
     gap: 15,
   },
   track: { height: 3, backgroundColor: c.border, borderRadius: 4, overflow: 'hidden' },

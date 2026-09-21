@@ -1,3 +1,4 @@
+import { s as layout } from '../../src/components/ui';
 import { useEffect, useState } from 'react';
 import { View, TextInput, FlatList, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -41,7 +42,7 @@ export default function ExploreScreen() {
         keyExtractor={(item) => `${item.kind}:${item.slug}`}
         renderItem={({ item }) => <ContentCard item={item} />}
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 110 }}
+        contentContainerStyle={[layout.page, { paddingHorizontal: 24, paddingBottom: 110 }]}
         onEndReached={() => {
           if (result.hasNextPage && !result.isFetchingNextPage) void result.fetchNextPage();
         }}

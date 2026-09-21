@@ -1,4 +1,4 @@
-import { View, Pressable, StyleSheet } from 'react-native';
+import { View, Pressable, StyleSheet, useWindowDimensions } from 'react-native';
 import { router, usePathname } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Pause, Play, X } from 'lucide-react-native';
@@ -16,6 +16,7 @@ export function MiniPlayer() {
   const player = usePlayer();
   const pathname = usePathname();
   const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
   const reduced = useReducedMotion();
   if (!player.lesson || pathname.startsWith('/lesson/')) return null;
   const inTabs = ['/', '/explore', '/library', '/profile'].includes(pathname);
@@ -23,7 +24,10 @@ export function MiniPlayer() {
     <Animated.View
       entering={reduced ? undefined : playerEnter}
       exiting={reduced ? undefined : playerExit}
-      style={[styles.container, { bottom: insets.bottom + (inTabs ? 65 : 12) }]}
+      style={[
+        styles.container,
+        { width: Math.min(696, width - 24), bottom: insets.bottom + (inTabs ? 65 : 12) },
+      ]}
     >
       <View style={styles.row}>
         <Pressable
@@ -66,8 +70,7 @@ export function MiniPlayer() {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    left: 12,
-    right: 12,
+    alignSelf: 'center',
     backgroundColor: c.elevated,
     borderWidth: 1,
     borderColor: '#596B71',

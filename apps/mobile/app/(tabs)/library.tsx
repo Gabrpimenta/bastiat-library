@@ -1,3 +1,4 @@
+import { s as layout } from '../../src/components/ui';
 import { useEffect, useState } from 'react';
 import { View, ScrollView, Pressable, Alert, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -47,7 +48,7 @@ export default function LibraryScreen() {
   return (
     <SafeAreaView edges={['top']} style={{ flex: 1 }}>
       <Header />
-      <ScrollView contentContainerStyle={{ padding: 24, paddingBottom: 170 }}>
+      <ScrollView contentContainerStyle={[layout.page, { padding: 24, paddingBottom: 170 }]}>
         <Eyebrow>YOUR COLLECTION</Eyebrow>
         <View style={{ marginTop: 9, marginBottom: 10 }}>
           <Title>My library</Title>
@@ -77,7 +78,7 @@ export default function LibraryScreen() {
         )}
         {user && (
           <View style={styles.sync}>
-            <Txt style={styles.muted}>
+            <Txt style={[styles.muted, { flex: 1 }]}>
               {library.syncing
                 ? 'Syncing your library…'
                 : (library.syncError ?? 'Your progress is saved on this device.')}
@@ -110,7 +111,7 @@ export default function LibraryScreen() {
                 >
                   <Artwork
                     uri={item.lesson.coverUrl}
-                    style={{ width: 68, height: 76, aspectRatio: undefined, borderRadius: 5 }}
+                    style={{ width: 68, height: 68, aspectRatio: 1, borderRadius: 5 }}
                   />
                   <View style={{ flex: 1 }}>
                     <Txt style={{ fontSize: 16 }}>{item.lesson.title}</Txt>

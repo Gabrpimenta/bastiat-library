@@ -8,7 +8,11 @@ The studio publishes a temporary draft that reuses the project's original narrat
 
 Temporary server lessons were removed after validation. No demo credentials, device identifiers or provisioning profiles are included in the recording or repository.
 
-## Screenshots
+## Latest visual pass
+
+[Updated web and native screenshots](qa/VISUAL_REVIEW.md) show the subsequent responsive layout review. The video and original screenshots below still document application source `3c98567`.
+
+## Original delivery screenshots
 
 ![Web collection](media/web-home.png)
 

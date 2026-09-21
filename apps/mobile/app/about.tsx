@@ -1,3 +1,4 @@
+import { s as layout } from '../src/components/ui';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors as c } from '@bastiat/design-tokens';
@@ -5,9 +6,9 @@ import { BackBar, Title, Txt, Eyebrow } from '../src/components/ui';
 
 export default function AboutScreen() {
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+    <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
       <BackBar label="Profile" />
-      <ScrollView contentContainerStyle={{ padding: 24, paddingBottom: 160 }}>
+      <ScrollView contentContainerStyle={[layout.page, { padding: 24, paddingBottom: 160 }]}>
         <Eyebrow>ABOUT & PRIVACY</Eyebrow>
         <View style={{ marginTop: 12, marginBottom: 25 }}>
           <Title>Ideas, with context.</Title>
