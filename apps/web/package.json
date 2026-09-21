@@ -1,0 +1,39 @@
+{
+  "name": "@bastiat/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port 3000",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0 --port 3000",
+    "typecheck": "tsc --noEmit",
+    "seed": "tsx --env-file=.env.local src/seed.ts",
+    "payload": "payload",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
+    "migrate": "payload migrate"
+  },
+  "dependencies": {
+    "@bastiat/contracts": "workspace:*",
+    "@bastiat/design-tokens": "workspace:*",
+    "@payloadcms/db-postgres": "3.90.1",
+    "@payloadcms/next": "3.90.1",
+    "@tanstack/react-query": "5.103.1",
+    "graphql": "^16.11.0",
+    "lucide-react": "1.47.0",
+    "next": "16.3.5",
+    "payload": "3.90.1",
+    "pg": "^8.16.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "sharp": "0.35.4",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "6.0.3",
+    "tsx": "^4.21.0"
+  }
+}

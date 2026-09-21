@@ -1,0 +1,16 @@
+pnpm-lock.yaml
+apps/web/src/payload-types.ts
+apps/web/src/app/(payload)/admin/importMap.js
+content/media/
+apps/web/public/artwork/
+apps/mobile/assets/
+.local/
+.next/
+.expo/
+apps/mobile/ios/
+apps/mobile/android/
+test-results/
+playwright-report/
+
+apps/web/next-env.d.ts
+apps/mobile/expo-env.d.ts

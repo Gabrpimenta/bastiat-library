@@ -1,0 +1,59 @@
+{
+  "name": "bastiat-library",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.28.1",
+  "engines": {
+    "node": ">=24.13 <25"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @bastiat/web dev",
+    "mobile": "pnpm --filter @bastiat/mobile start",
+    "db:start": "node scripts/database.mjs start",
+    "db:stop": "node scripts/database.mjs stop",
+    "setup": "node scripts/setup.mjs",
+    "seed": "pnpm --filter @bastiat/web seed",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:api": "vitest run --config vitest.api.config.ts",
+    "test:e2e": "playwright test",
+    "build": "pnpm --filter @bastiat/web build",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test",
+    "assets": "node scripts/create-artwork.mjs",
+    "media": "node scripts/create-media.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.15.0",
+    "eslint": "10.11.0",
+    "globals": "^17.0.0",
+    "kokoro-js": "1.2.1",
+    "pg": "^8.16.0",
+    "prettier": "3.9.8",
+    "sharp": "0.35.4",
+    "tsx": "^4.21.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.0",
+    "vitest": "5.0.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@react-native/metro-config": "0.86.3",
+      "@types/react-dom": "19.2.3",
+      "react-native-reanimated": "4.5.1",
+      "react-native-worklets": "0.10.1",
+      "dompurify": "3.4.13",
+      "@esbuild-kit/core-utils>esbuild": "0.25.12",
+      "xcode>uuid": "11.1.1"
+    },
+    "patchedDependencies": {
+      "decode-uri-component@0.2.2": "patches/decode-uri-component@0.2.2.patch"
+    }
+  },
+  "type": "module"
+}

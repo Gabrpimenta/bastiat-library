@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "the-broken-window",
+    "filename": "the-broken-window.mp3",
+    "bytes": 1879533,
+    "sha256": "d0bde47940f9de7d8bba5bc75996a9a9bc39a2d7af50178235bbe379cfc7ffbf",
+    "durationSeconds": 156.55,
+    "version": "1",
+    "mimeType": "audio/mpeg"
+  },
+  {
+    "slug": "a-second-look-at-cost",
+    "filename": "a-second-look-at-cost.mp3",
+    "bytes": 1906605,
+    "sha256": "83585d1129b0db8d70cb4f8604d04efa01cfb49a5a1f2cb7ec05f69d85c68cc3",
+    "durationSeconds": 158.8,
+    "version": "1",
+    "mimeType": "audio/mpeg"
+  },
+  {
+    "slug": "thinking-in-alternatives",
+    "filename": "thinking-in-alternatives.mp4",
+    "bytes": 2625572,
+    "sha256": "5e39fcedac5618160cfb8f82b6aefa626216daca471b492686a2f2d7412455e5",
+    "durationSeconds": 165.25,
+    "version": "1",
+    "mimeType": "video/mp4"
+  }
+]

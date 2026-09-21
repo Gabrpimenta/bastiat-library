@@ -1,0 +1,87 @@
+{
+  "course": {
+    "slug": "the-seen-and-the-unseen",
+    "title": "The Seen and the Unseen",
+    "description": "Look beyond the obvious. A short introduction to opportunity cost, choice, and the ideas of Frédéric Bastiat.",
+    "introduction": "A broken window. A purchase not made. A consequence no one stops to count. In three short lessons, explore a habit of thought that makes everyday choices more interesting.\n\nThis course is an original editorial introduction to Bastiat's ideas, not a historical recording or a claim to represent his philosophy in full. Each lesson includes its complete transcript and further reading.",
+    "topic": "Economics of everyday life",
+    "cover": "window"
+  },
+  "lessons": [
+    {
+      "slug": "the-broken-window",
+      "title": "The broken window",
+      "description": "A shopkeeper, a broken pane, and the purchase that never happens.",
+      "format": "audio",
+      "cover": "window",
+      "paragraphs": [
+        "A shop window breaks. The glazier arrives, replaces the glass, and gets paid. From the pavement, it looks as though an unfortunate accident has created useful work. A customer for the glazier. Money changing hands. Something happening. But before we call the accident a benefit, there is another part of the story to consider. What would the shopkeeper have done with that money if the window had remained intact?",
+        "Perhaps the shopkeeper had planned to buy a pair of shoes. Perhaps to repair a tool, add a shelf, or save for a quieter month. We can see the new window. We cannot see the shoes that were never ordered. That contrast is the starting point of Frédéric Bastiat's famous broken-window argument. He asks us to follow a decision beyond its immediate, visible result, and to consider the alternative that it displaced.",
+        "The glazier really does receive income. Nothing about the argument requires denying that fact. The question is whether income for one person establishes a gain for everyone. Before the accident, the shopkeeper had a usable window and money available for another purpose. After the repair, the shopkeeper has a usable window again, but the money is gone. Replacing something destroyed can be valuable work without making the destruction itself a source of prosperity.",
+        "In modern language, this invites us to think about opportunity cost: the value of the next best alternative we give up. It is a useful question well beyond economics. If you spend an evening answering messages, what happens to the book you meant to read? If a team spends a week fixing avoidable regressions, what useful improvement remains unbuilt? The visible activity is real. So is the possibility that disappeared, even when it leaves no receipt.",
+        "There is a limit to the example. A short story does not settle every question about employment, public spending, or an economy in recession. Real situations involve institutions, changing prices, idle resources, and uncertainty. The lesson is a method of inquiry, not a substitute for investigating those conditions. Ask what changed, who gained, who bore a cost, and what a realistic alternative would have been.",
+        "Try the method on a small decision today. Name the option you chose. Then name one credible alternative, rather than every imaginable possibility. What did you gain, and what did you forgo? Bastiat's window becomes useful when it turns a quick impression into a more complete question. In the next lesson, we will explore why that second half of the picture is so easy to overlook."
+      ]
+    },
+    {
+      "slug": "a-second-look-at-cost",
+      "title": "A second look at cost",
+      "description": "Follow a decision beyond the first result, without mistaking a story for proof.",
+      "format": "audio",
+      "cover": "choice",
+      "paragraphs": [
+        "Imagine a town celebrates a new public building. The photograph shows the finished entrance. A report lists construction jobs and money paid to local suppliers. Those are concrete, visible results. Now ask a different question: what else could have been done with the money, land, materials, and time? The answer may be harder to photograph, but it belongs in the evaluation just as much as the building does.",
+        "Bastiat's distinction between what is seen and what is not seen encourages us to compare whole alternatives. The relevant choice is rarely between a project with benefits and a world in which nothing happens. It is between different uses of scarce resources. If the building is a good investment, the argument for it becomes stronger when it addresses those alternatives honestly. Acknowledging opportunity cost does not, by itself, prove that a project should be rejected.",
+        "A practical way to reason through the choice is to separate three questions. First, what is the intended benefit, and for whom? Second, what resources will be used, and who supplies them? Third, what is the strongest realistic alternative? Keeping these questions separate prevents a vivid success story from quietly taking the place of a comparison. It also makes disagreements easier to understand. Two people may value the same goal while expecting different results from a proposed means.",
+        "Consider a software team choosing between a new feature and improving reliability. A feature can be demonstrated on a screen. Reliability often becomes visible only when it fails. Yet the absence of a dramatic screenshot does not make reliability worthless. Fewer interruptions may protect the time and attention of every user. At the same time, improving reliability has its own opportunity cost. An appealing principle still needs evidence about the product, the users, and the scale of the problem.",
+        "There is another trap: inventing the unseen alternative with more confidence than the evidence allows. We cannot observe a choice that was never made as though it were an event on a recording. A counterfactual is an argument. It needs plausible assumptions, a clear comparison, and room for uncertainty. Ask what would change your mind. If every possible result seems to confirm your explanation, the explanation may not be doing enough work.",
+        "For your next decision, write two short sentences. The first begins with: the immediate result is. The second begins with: the alternative we are giving up is. Then mark what you know and what you are estimating. That small distinction is a way to practice intellectual care. It keeps the unseen in view without pretending that uncertainty has disappeared."
+      ]
+    },
+    {
+      "slug": "thinking-in-alternatives",
+      "title": "Thinking in alternatives",
+      "description": "Turn an economic insight into a practical habit for everyday decisions.",
+      "format": "video",
+      "cover": "trade",
+      "paragraphs": [
+        "A good idea becomes more useful when you can put it to work. We have looked at a broken window and at the alternatives hidden behind an attractive result. Now let us turn those examples into a simple habit: look at the choice, the trade-off, and the evidence. These are three prompts for thought, not an automatic formula for the right answer.",
+        "Start with the choice. State what you are deciding in concrete terms. Not whether education matters, but whether an hour today is better spent reading, practicing, or resting. Not whether a team values quality, but which problem it should address this week. Abstract labels make it easy to agree while imagining different actions. A concrete choice gives everyone the same object to examine.",
+        "Next, identify the trade-off. Time, money, attention, and materials all have alternative uses. Choose the next best realistic option and compare it fairly. Do not give one option a careful description while reducing the other to a slogan. Think about different people affected by the decision, and about effects that arrive later. An inconvenience now may make a later task easier; an apparent saving now may move a cost to someone else.",
+        "Finally, examine the evidence. Which outcomes have you observed? Which depend on estimates? Which are preferences about what matters? These are different kinds of reasons, and each deserves its own treatment. A test can help with an uncertain prediction. A conversation can clarify competing priorities. Neither works well when we present a personal preference as a measured fact, or a confident prediction as a guarantee.",
+        "Bastiat wrote as an advocate, using sharp examples to challenge the arguments around him. We can appreciate the clarity of his questions while still examining his conclusions. Learning from an author does not require treating a memorable paragraph as the final word. It means being able to reconstruct an argument, test its assumptions, and explain where it helps or where more work is needed.",
+        "Here is a final exercise. Think of one decision you expect to make this week. Write the action, its next best alternative, one likely benefit, one cost, and one uncertainty. Decide what information would be useful before you act. You now have a small decision record that another person can understand. That is the spirit of this introduction: give the obvious result a second look, and make room for what the first glance leaves out."
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "slug": "law-and-individual-liberty",
+      "title": "Law and individual liberty",
+      "description": "What should the law protect, and what should limit its reach?",
+      "cover": "law",
+      "topic": "Liberty & responsibility",
+      "readingMinutes": 3,
+      "body": "A question about limits\n\nIn The Law, Bastiat asks what happens when an institution meant to protect people becomes a means of taking from some for the benefit of others. His answer is shaped by a strong commitment to individual liberty and property. The argument invites a distinction between protecting a person's freedom to act and directing that person's life toward a goal chosen by someone else.\n\nReading the argument carefully\n\nBastiat's writing is polemical. He uses forceful language to make a boundary visible. A careful reader can ask two questions at once: is the boundary morally persuasive, and does this particular policy cross it? Answering the first does not remove the need to investigate the second. Institutions have details, effects, and historical circumstances that a short slogan cannot capture.\n\nA useful disagreement\n\nSuppose two people agree that public power should be constrained but disagree about a specific service. Their disagreement may concern rights, expected consequences, or the practical availability of alternatives. Separating these issues makes discussion more useful. It also prevents a disagreement about implementation from becoming an unsupported claim about the other person's motives.\n\nQuestions to take into the text\n\nWhat does Bastiat mean by a right? What role does consent play in his reasoning? Which responsibilities follow from the freedom he defends? Where would you draw a different boundary, and why? Reading with these questions lets you engage an argument without having to accept or reject an entire philosophy in advance.\n\nThis is an original introductory reading guide. It is not a translation of The Law or a comprehensive account of Bastiat's political thought."
+    },
+    {
+      "slug": "trade-and-cooperation",
+      "title": "Trade and cooperation",
+      "description": "Why an exchange can mean different things to the people on each side.",
+      "cover": "trade",
+      "topic": "Exchange & cooperation",
+      "readingMinutes": 3,
+      "body": "Two perspectives on one exchange\n\nA baker sells bread to a customer. The customer prefers the bread to the money at that moment; the baker prefers the money to keeping that particular loaf. The exchange need not mean that they value everything in the same way. Their differing priorities are part of what makes the transaction possible.\n\nSeeing cooperation\n\nBastiat's defense of trade draws attention to the many people whose work enters ordinary goods. A finished object can conceal a long chain of specialized knowledge, tools, transport, and decisions. Looking at that chain can change the question from who made this alone to how these activities came to fit together.\n\nFreedom and the conditions of exchange\n\nA voluntary agreement is an important starting point, but useful analysis also asks about fraud, coercion, access to information, and costs imposed on people outside the agreement. Describing an exchange as beneficial to its participants does not automatically answer every question about its wider effects. Those questions need arguments and evidence of their own.\n\nA practical exercise\n\nChoose an everyday item and trace three contributions that made it available to you. Then consider one alternative: making it yourself, buying a different version, or going without. What does each option require from your time and resources? Which parts of the comparison are visible in the price, and which are harder to see?\n\nAn invitation to investigate\n\nEconomic writing is most useful when it sharpens observation. Read Bastiat as a thinker offering arguments to examine, and notice where his examples clarify a decision or leave questions open. The goal is to reason more carefully about cooperation, rather than to replace every difficult case with a familiar phrase.\n\nThis is an original editorial introduction informed by Bastiat's writing on exchange and free trade. It is not a quotation, translation, or historical lecture."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Frédéric Bastiat — Online Library of Liberty",
+      "url": "https://oll.libertyfund.org/people/frederic-bastiat"
+    },
+    {
+      "title": "Selected Essays on Political Economy — Econlib",
+      "url": "https://www.econlib.org/library/Bastiat/basEss.html"
+    }
+  ]
+}

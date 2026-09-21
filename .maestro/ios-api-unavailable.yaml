@@ -1,0 +1,23 @@
+appId: com.gabrielpimenta.bastiatlibrary
+---
+- tapOn:
+    text: Open
+    optional: true
+- openLink: bastiat://lesson/the-broken-window
+- tapOn:
+    text: Open
+    optional: true
+- extendedWaitUntil:
+    visible: Play lesson
+    timeout: 40000
+- tapOn: Play lesson
+- extendedWaitUntil:
+    visible: Pause lesson
+    timeout: 20000
+- scrollUntilVisible:
+    element:
+      text: 'Synthetic narration · Playing offline'
+    direction: DOWN
+- assertVisible: Downloaded
+- takeScreenshot: ios-local-playback
+- tapOn: Pause lesson

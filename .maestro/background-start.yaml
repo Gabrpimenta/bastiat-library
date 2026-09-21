@@ -1,0 +1,17 @@
+appId: com.gabrielpimenta.bastiatlibrary
+---
+- openLink: bastiat://lesson/qa-background-playback
+- tapOn:
+    text: Open
+    optional: true
+- scrollUntilVisible:
+    element:
+      text: Play lesson
+    direction: DOWN
+    timeout: 20000
+- tapOn: Play lesson
+- extendedWaitUntil:
+    visible: Pause lesson
+    timeout: 20000
+- pressKey: lock
+- takeScreenshot: background-start

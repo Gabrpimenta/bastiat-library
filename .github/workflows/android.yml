@@ -1,0 +1,62 @@
+name: Android internal QA build
+on:
+  workflow_dispatch:
+    inputs:
+      api_url:
+        description: API origin reachable from the test device (no credentials or path)
+        required: true
+        default: http://10.0.2.2:3000
+        type: string
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      EXPO_PUBLIC_API_URL: ${{ inputs.api_url }}
+      APP_ENV: development
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Validate the internal QA API origin
+        run: |
+          node --input-type=module -e '
+            const value = process.env.EXPO_PUBLIC_API_URL;
+            const url = new URL(value);
+            if (!["http:", "https:"].includes(url.protocol) || url.origin !== value) {
+              throw new Error("Use an HTTP(S) origin without credentials, path, query or fragment");
+            }
+          '
+      - run: pnpm --filter @bastiat/mobile exec expo prebuild --platform android --no-install
+      - name: Compile internal APK with bundled JavaScript
+        working-directory: apps/mobile/android
+        run: |
+          export JAVA_HOME="$JAVA_HOME_17_X64"
+          ./gradlew :app:assembleRelease -PreactNativeArchitectures=arm64-v8a,x86_64 --max-workers=2
+      - name: Record artifact identity
+        run: |
+          mkdir -p artifacts
+          cp apps/mobile/android/app/build/outputs/apk/release/app-release.apk artifacts/bastiat-library-internal.apk
+          sha256sum artifacts/bastiat-library-internal.apk > artifacts/SHA256SUMS
+          node --input-type=module -e '
+            import { writeFileSync } from "node:fs";
+            writeFileSync("artifacts/build.json", JSON.stringify({
+              commit: process.env.GITHUB_SHA,
+              apiOrigin: process.env.EXPO_PUBLIC_API_URL,
+              environment: "internal-qa",
+              signing: "Generated development key; not store distribution",
+              javascript: "Bundled; Metro not required",
+              physicalDeviceAcceptance: "Not implied by this build"
+            }, null, 2));
+          '
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: android-internal-${{ github.sha }}
+          path: artifacts/
+          retention-days: 14

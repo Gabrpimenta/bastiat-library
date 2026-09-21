@@ -1,0 +1,5 @@
+# Preserve upstream license formatting and context-sensitive patch whitespace.
+content/licenses/* -whitespace
+patches/*.patch -whitespace
+apps/web/src/payload-types.ts linguist-generated
+apps/web/src/migrations/*.ts linguist-generated

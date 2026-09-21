@@ -1,0 +1,17 @@
+# Reviewed external skills
+
+Reviewed on 21 September 2026. Skills are development references, not product dependencies or authority to change project scope. The selected skills were installed through the Codex skill installer at pinned commits. Future installation should preserve those revisions until an update is reviewed.
+
+| Source                                                                                                                                                                            | Revision                                   | Applied scope                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| [Expo: expo-data-fetching](https://github.com/expo/skills/tree/39708666ce7014def1f8e34f3d8c93e8d3f588bb/plugins/expo/skills/expo-data-fetching)                                   | `39708666ce7014def1f8e34f3d8c93e8d3f588bb` | Session hydration, secure tokens, loading/error/empty/content states, offline behavior and cancellation |
+| [Expo: expo-native-ui](https://github.com/expo/skills/tree/39708666ce7014def1f8e34f3d8c93e8d3f588bb/plugins/expo/skills/expo-native-ui)                                           | Same Expo revision                         | Reachable controls, large text, keyboard behavior, media APIs and native styling                        |
+| [Software Mansion Labs: React Native practices](https://github.com/software-mansion-labs/skills/tree/e3f00cdb34942cee8b788abe10fe0d78a7f2b4e9/skills/react-native-best-practices) | `e3f00cdb34942cee8b788abe10fe0d78a7f2b4e9` | SVG rendering review; large static artwork uses expo-image instead of a large SVG view tree             |
+
+The networking review found that providing an external AbortSignal disabled the API client's timeout. The client now preserves both cancellation paths, removes its listener on completion, and distinguishes caller cancellation from a timeout. Three behavior tests cover the regression.
+
+The UI review increased shared controls, chips and speed controls to at least 48 points, exposed disabled states, allowed the narration row to wrap, made transcript/error text selectable, removed fixed input height and replaced legacy shadow properties with boxShadow. Native visual verification follows these edits.
+
+Applicability decisions: the approved design uses a single dark editorial palette. Background audio, app identity, permission configuration and installation without Metro require native builds; Expo Go cannot establish those acceptance criteria. Existing players remain expo-audio and expo-video. Library preferences do not justify replacing working controls, icons or the synchronization architecture without a measured need. Examples in skills are checked against the installed SDK types before use.
+
+GSD-Codex was separately evaluated at [6b306f4](https://github.com/undeemed/get-shit-done-codex/tree/6b306f49d20f5bb245db2ad51e7c7a9491ad028f). Its persistent state and requirement-to-evidence practices were adapted to [STATE.md](../STATE.md) and the QA report. Its installer, global configuration and agent/model profiles were not adopted.

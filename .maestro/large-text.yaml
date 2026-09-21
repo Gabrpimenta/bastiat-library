@@ -1,0 +1,24 @@
+appId: com.gabrielpimenta.bastiatlibrary
+---
+- openLink: bastiat://profile
+- tapOn:
+    text: Open
+    optional: true
+- scrollUntilVisible:
+    element:
+      id: email
+    direction: DOWN
+- tapOn:
+    id: email
+- eraseText
+- inputText: invalid@example.test
+- pressKey: Enter
+- inputText: invalid-test-password
+- pressKey: Enter
+- scrollUntilVisible:
+    element:
+      text: 'We could not sign you in.*'
+    direction: DOWN
+    timeout: 25000
+- assertVisible: 'We could not sign you in.*'
+- takeScreenshot: large-text-sign-in-recovery
