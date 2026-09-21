@@ -31,6 +31,19 @@ test('catalog, search, saved reading and responsive navigation', async ({ page }
   );
   expect(errors).toEqual([]);
 });
+test('an expired session exposes sign-in again without requiring sign-out', async ({
+  page,
+  context,
+}) => {
+  await login(page);
+  await context.clearCookies();
+  await page.getByRole('button', { name: 'Sync library' }).click();
+  await expect(page.getByText('Your session expired.', { exact: false })).toBeVisible();
+  await page.getByLabel('Email').fill(process.env.SEED_STUDENT_EMAIL ?? 'reader@bastiat.local');
+  await page.getByLabel('Password').fill(process.env.SEED_PASSWORD!);
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Sign out' })).toBeVisible();
+});
 test('real audio playback persists and resumes in a second authenticated browser', async ({
   browser,
   page,

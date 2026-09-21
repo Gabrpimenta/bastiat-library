@@ -34,6 +34,7 @@ export class LibraryController {
   private listeners = new Set<Listener>();
   private running = false;
   public syncError: string | null = null;
+  public requiresAuthentication = false;
   public syncing = false;
 
   constructor(
@@ -56,6 +57,7 @@ export class LibraryController {
     this.scope = id === null ? 'guest' : `user:${id}`;
     this.generation++;
     this.syncError = null;
+    this.requiresAuthentication = false;
     this.emit();
   }
   clearUser(id: number) {
@@ -138,7 +140,7 @@ export class LibraryController {
   }
 
   async sync() {
-    if (this.scope === 'guest' || this.running) return;
+    if (this.scope === 'guest' || this.running || this.requiresAuthentication) return;
     const scope = this.scope;
     const generation = this.generation;
     const valid = () => generation === this.generation;
@@ -223,12 +225,12 @@ export class LibraryController {
       }
     } catch (error) {
       if (!valid()) return;
-      this.syncError =
-        error instanceof ApiError && error.status === 401
-          ? 'Sign in again to resume syncing.'
-          : error instanceof Error
-            ? error.message
-            : 'Sync will retry when you reconnect.';
+      this.requiresAuthentication = error instanceof ApiError && error.status === 401;
+      this.syncError = this.requiresAuthentication
+        ? 'Sign in again to resume syncing.'
+        : error instanceof Error
+          ? error.message
+          : 'Sync will retry when you reconnect.';
       for (const record of this.storage.all<LocalProgress>(scope, 'progress')) {
         if (record.inFlight)
           this.storage.set(scope, 'progress', record.value.lessonSlug, {

@@ -812,7 +812,7 @@ export function ProfileView() {
         <img src="/artwork/choice.webp" alt="Two paths branching toward different possibilities" />
       </div>
       <section className="account-panel">
-        {app.user ? (
+        {app.user && !lib.requiresAuthentication ? (
           <>
             <span className="avatar">
               {app.user.name
@@ -859,7 +859,11 @@ export function ProfileView() {
           <>
             <BookOpen className="copper" size={32} strokeWidth={1.3} />
             <h2>Welcome back.</h2>
-            <p>Sign in to your learning account.</p>
+            <p>
+              {lib.requiresAuthentication
+                ? 'Your session expired. Sign in again to sync. Your progress is still saved on this device.'
+                : 'Sign in to your learning account.'}
+            </p>
             <form
               onSubmit={(event) => {
                 void submit(event);

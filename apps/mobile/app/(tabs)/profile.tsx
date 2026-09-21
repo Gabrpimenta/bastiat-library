@@ -13,11 +13,14 @@ import { router } from 'expo-router';
 import { UserRound, ArrowUpRight } from 'lucide-react-native';
 import { colors as c } from '@bastiat/design-tokens';
 import { useSession, signIn, signOut } from '../../src/services/session';
+import { useLibrary } from '../../src/services/library';
 import { stopPlayer } from '../../src/services/player';
 import { Header, Eyebrow, Title, Txt, Button, type } from '../../src/components/ui';
 
 export default function ProfileScreen() {
   const user = useSession();
+  const library = useLibrary();
+  const signedIn = user && !library.requiresAuthentication;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
@@ -62,12 +65,12 @@ export default function ProfileScreen() {
         >
           <Eyebrow>YOUR SPACE</Eyebrow>
           <View style={{ marginTop: 9, marginBottom: 23 }}>
-            <Title>{user ? `Hello, ${user.name.split(' ')[0]}.` : 'Stay curious.'}</Title>
+            <Title>{signedIn ? `Hello, ${user.name.split(' ')[0]}.` : 'Stay curious.'}</Title>
           </View>
           <View style={styles.avatar}>
             <UserRound size={34} color={c.copper} strokeWidth={1.25} />
           </View>
-          {user ? (
+          {signedIn ? (
             <>
               <Txt style={{ fontSize: 20, marginTop: 20 }}>{user.name}</Txt>
               <Txt style={styles.description}>{user.email}</Txt>
@@ -95,8 +98,9 @@ export default function ProfileScreen() {
           ) : (
             <>
               <Txt style={[styles.description, { marginVertical: 22 }]}>
-                Sign in to save your place across devices. You can explore, listen and download
-                without an account.
+                {library.requiresAuthentication
+                  ? 'Your session expired. Sign in again to sync. Your progress is still saved on this device.'
+                  : 'Sign in to save your place across devices. You can explore, listen and download without an account.'}
               </Txt>
               <Txt style={styles.label}>Email</Txt>
               <TextInput
