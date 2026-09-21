@@ -33,6 +33,10 @@ Operational commands and package boundaries are maintained in [AGENTS.md](../AGE
 - [ ] Complete screen-reader and representative-hardware performance review.
 - [x] Prepare commit-associated builds, screenshots and the demonstration video.
 - [x] Publish the repository and verify application Checks and Android build CI for `3c98567`.
+- [x] Verify merged visual-review source `095d22d` in main-branch CI (39 tests).
+- [x] Refresh the demonstration, screenshots and build identities after the visual-review merge.
+
+Delivery decision: use the recorded demo and local setup for review. Defer web/API hosting until there is interest in a live demonstration; hosting is not a blocker for this delivery.
 
 Completed implementation is distinct from completed acceptance. The executable evidence and remaining gaps are in [QA validation](qa/VALIDATION.md). Read [current state](STATE.md) first when resuming work.
 

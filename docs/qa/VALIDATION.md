@@ -72,6 +72,10 @@ The 21 September polish uses 120 ms press feedback and 180–220 ms state/entran
 
 The later [web and native visual review](VISUAL_REVIEW.md) records the current layout changes, browser coverage, simulator-only scope and screenshots. This pass adds three responsive browser regressions (eight browser scenarios total) and a reproducible native screen tour. Earlier physical-device and artifact records remain tied to their stated revisions.
 
+## Refreshed demo delivery
+
+The post-merge [demo refresh](DEMO_REFRESH.md) records current screenshots, studio publication, a new Android Emulator download/offline restart, and a read-only comparison of existing native progress with the web player. No physical device was used. Public hosting is deferred until there is interest in a live demonstration.
+
 ## Remaining release gates
 
 - Physical Android acceptance, deferred by the owner; extended navigation and performance profiling on representative hardware.
