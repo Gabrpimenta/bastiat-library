@@ -24,6 +24,8 @@ import { contentLabel, type Content } from '@bastiat/contracts';
 import { useLibrary } from '../services/library';
 import { cacheContent } from '../services/api';
 import { useReducedMotion } from '../services/accessibility';
+import Animated from 'react-native-reanimated';
+import { MotionPressable, motion } from './motion';
 
 export const type = {
   body: 'DMSans_400Regular',
@@ -59,20 +61,16 @@ export function Button({
   testID?: string;
 }) {
   return (
-    <Pressable
+    <MotionPressable
       testID={testID}
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={({ pressed }) => [
-        s.button,
-        secondary && s.buttonSecondary,
-        { opacity: pressed || disabled ? 0.55 : 1 },
-      ]}
+      style={[s.button, secondary && s.buttonSecondary]}
     >
       <Txt style={[s.buttonText, secondary && { color: c.text }]}>{children}</Txt>
-    </Pressable>
+    </MotionPressable>
   );
 }
 export function IconButton({
@@ -87,16 +85,16 @@ export function IconButton({
   disabled?: boolean;
 }) {
   return (
-    <Pressable
+    <MotionPressable
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityState={{ disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={[s.iconButton, disabled && { opacity: 0.4 }]}
+      style={s.iconButton}
     >
       {children}
-    </Pressable>
+    </MotionPressable>
   );
 }
 export function Header() {
@@ -171,7 +169,7 @@ export function SaveButton({ item }: { item: Content }) {
   const lib = useLibrary();
   const saved = lib.isSaved(item);
   return (
-    <Pressable
+    <MotionPressable
       onPress={() => {
         cacheContent(item);
         lib.toggleBookmark(item);
@@ -186,7 +184,7 @@ export function SaveButton({ item }: { item: Content }) {
       ) : (
         <Bookmark size={21} color={c.muted} strokeWidth={1.5} />
       )}
-    </Pressable>
+    </MotionPressable>
   );
 }
 export function openContent(item: Content) {
@@ -201,7 +199,8 @@ export function openContent(item: Content) {
 export function ContentCard({ item, horizontal = false }: { item: Content; horizontal?: boolean }) {
   return (
     <View style={[s.card, horizontal && { width: 280 }]}>
-      <Pressable
+      <MotionPressable
+        feedback="highlight"
         onPress={() => openContent(item)}
         accessibilityRole="button"
         accessibilityLabel={`Open ${item.title}`}
@@ -225,7 +224,7 @@ export function ContentCard({ item, horizontal = false }: { item: Content; horiz
             {item.description}
           </Txt>
         </View>
-      </Pressable>
+      </MotionPressable>
       <View style={s.cardMeta}>
         <Txt style={{ fontSize: 12, color: c.muted }}>{contentLabel(item)}</Txt>
         <SaveButton item={item} />
@@ -268,14 +267,14 @@ export function Chip({
   onPress(): void;
 }) {
   return (
-    <Pressable
+    <MotionPressable
       accessibilityRole="button"
       accessibilityState={{ selected }}
       onPress={onPress}
       style={[s.chip, selected && s.chipSelected]}
     >
       <Txt style={{ fontSize: 13, color: selected ? c.copper : c.muted }}>{label}</Txt>
-    </Pressable>
+    </MotionPressable>
   );
 }
 export function Chips({ children }: { children: React.ReactNode }) {
@@ -329,9 +328,20 @@ export function ErrorView({ message, retry }: { message: string; retry(): void }
   );
 }
 export function ProgressBar({ value }: { value: number }) {
+  const reduced = useReducedMotion();
   return (
     <View style={s.track}>
-      <View style={[s.trackFill, { width: `${Math.max(0, Math.min(100, value * 100))}%` }]} />
+      <Animated.View
+        style={[
+          s.trackFill,
+          {
+            width: `${Math.max(0, Math.min(100, value * 100))}%`,
+            transitionProperty: 'width',
+            transitionDuration: reduced ? 1 : motion.state,
+            transitionTimingFunction: 'linear',
+          },
+        ]}
+      />
     </View>
   );
 }
@@ -448,5 +458,5 @@ export const s = StyleSheet.create({
     gap: 15,
   },
   track: { height: 3, backgroundColor: c.border, borderRadius: 4, overflow: 'hidden' },
-  trackFill: { height: '100%', backgroundColor: c.copper },
+  trackFill: { position: 'absolute', left: 0, top: 0, height: '100%', backgroundColor: c.copper },
 });

@@ -1,5 +1,6 @@
+import { MotionPressable } from '../../src/components/motion';
 import { useEffect } from 'react';
-import { View, ScrollView, Pressable, StyleSheet, RefreshControl } from 'react-native';
+import { View, ScrollView, StyleSheet, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
@@ -68,7 +69,8 @@ export default function HomeScreen() {
               <Title>A little curiosity.{`\n`}A wider world.</Title>
             </View>
             {resume && progress && (
-              <Pressable
+              <MotionPressable
+                feedback="highlight"
                 style={styles.continue}
                 onPress={() => openContent(resume)}
                 accessibilityRole="button"
@@ -84,10 +86,11 @@ export default function HomeScreen() {
                   </Txt>
                 </View>
                 <ArrowRight color={c.copper} size={19} />
-              </Pressable>
+              </MotionPressable>
             )}
             {data.featuredCourse && (
-              <Pressable
+              <MotionPressable
+                feedback="highlight"
                 style={styles.hero}
                 accessibilityRole="button"
                 accessibilityLabel="Explore The Seen and the Unseen"
@@ -119,7 +122,7 @@ export default function HomeScreen() {
                     </View>
                   </View>
                 </View>
-              </Pressable>
+              </MotionPressable>
             )}
             <View style={styles.note}>
               <Headphones size={16} color={c.copper} />

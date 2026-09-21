@@ -36,6 +36,7 @@ test('an expired session exposes sign-in again without requiring sign-out', asyn
   context,
 }) => {
   await login(page);
+  await expect(page.getByRole('button', { name: 'Sync library' })).toBeEnabled();
   await context.clearCookies();
   await page.getByRole('button', { name: 'Sync library' }).click();
   await expect(page.getByText('Your session expired.', { exact: false })).toBeVisible();

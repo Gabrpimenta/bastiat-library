@@ -827,6 +827,7 @@ export function ProfileView() {
                 My Library <ArrowRight size={17} />
               </Link>
               <button
+                disabled={lib.syncing}
                 onClick={() => {
                   void lib.sync();
                 }}

@@ -39,6 +39,10 @@
   --copper: #e2ae85;
   --sage: #aac4ae;
   --danger: #ffa89d;
+  --motion-press: 120ms;
+  --motion-state: 180ms;
+  --motion-enter: 220ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 * {
   box-sizing: border-box;
@@ -453,7 +457,7 @@ h3 {
 }
 .card-art img {
   height: 100%;
-  transition: transform 0.25s;
+  transition: transform var(--motion-enter) var(--ease-out);
 }
 .card-art:hover img {
   transform: scale(1.035);
@@ -748,14 +752,17 @@ h3 {
   color: var(--muted);
 }
 .progress-track {
+  position: relative;
   height: 3px;
   background: var(--border);
   border-radius: 3px;
   overflow: hidden;
 }
 .progress-track > div {
+  position: absolute;
   height: 100%;
   background: var(--copper);
+  transition: width var(--motion-state) linear;
 }
 .lesson-row {
   display: flex;
@@ -1171,6 +1178,7 @@ h3 {
   box-shadow: 0 12px 40px #0007;
   overflow: hidden;
   backdrop-filter: blur(14px);
+  animation: player-arrive var(--motion-enter) var(--ease-out);
 }
 .mini-player > img {
   width: 52px;
@@ -1205,6 +1213,79 @@ h3 {
   position: absolute;
   bottom: 0;
   left: 0;
+  transition: width var(--motion-state) linear;
+}
+
+/* Feedback starts with the interaction; actions never wait for motion to finish. */
+.button,
+.icon-button,
+.play-circle,
+.speed-button,
+.chip,
+.account-button {
+  transition:
+    transform var(--motion-press) var(--ease-out),
+    opacity var(--motion-press) var(--ease-out),
+    background-color var(--motion-state) var(--ease-out),
+    border-color var(--motion-state) var(--ease-out),
+    color var(--motion-state) var(--ease-out);
+}
+:is(.button, .icon-button, .play-circle, .speed-button, .chip, .account-button):not(
+    :disabled
+  ):active {
+  transform: scale(0.97);
+}
+.text-link,
+.back-link,
+.site-header nav a,
+.mobile-nav a {
+  transition: color var(--motion-press) var(--ease-out);
+}
+.lesson-row,
+.account-links a,
+.account-links button,
+.search-field,
+.account-panel input {
+  transition:
+    background-color var(--motion-state) var(--ease-out),
+    border-color var(--motion-state) var(--ease-out);
+}
+.search-field:focus-within,
+.account-panel input:focus-visible {
+  border-color: var(--copper);
+}
+.empty-state,
+.error-text,
+.conflict-panel,
+.info-banner {
+  animation: state-arrive var(--motion-state) var(--ease-out);
+}
+@media (hover: hover) {
+  .lesson-row:hover,
+  .account-links a:hover,
+  .account-links button:hover {
+    background-color: var(--surface);
+  }
+}
+@keyframes state-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes player-arrive {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 .information-page {
   max-width: 850px;
@@ -1569,9 +1650,17 @@ h3 {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     scroll-behavior: auto !important;
     animation: none !important;
     transition: none !important;
+  }
+  :is(.button, .icon-button, .play-circle, .speed-button, .chip, .account-button):not(
+      :disabled
+    ):active,
+  .card-art:hover img {
+    transform: none;
   }
 }
