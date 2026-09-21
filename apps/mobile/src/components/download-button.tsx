@@ -1,10 +1,11 @@
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import { router } from 'expo-router';
 import { Download, Check, X } from 'lucide-react-native';
 import { colors as c } from '@bastiat/design-tokens';
 import type { Lesson } from '@bastiat/contracts';
 import { useDownloads, getDownload, queueDownload, cancelDownload } from '../services/downloads';
-import { Txt } from './ui';
+import { ProgressBar, Txt } from './ui';
+import { MotionPressable } from './motion';
 export function DownloadButton({ lesson }: { lesson: Lesson }) {
   useDownloads();
   const item = getDownload(lesson.slug);
@@ -19,7 +20,7 @@ export function DownloadButton({ lesson }: { lesson: Lesson }) {
       : `Download · ${(lesson.asset.bytes / 1024 / 1024).toFixed(1)} MB`;
   return (
     <View>
-      <Pressable
+      <MotionPressable
         accessibilityRole="button"
         accessibilityLabel={active ? 'Cancel download' : label}
         onPress={() =>
@@ -36,7 +37,7 @@ export function DownloadButton({ lesson }: { lesson: Lesson }) {
           gap: 10,
           minHeight: 49,
           borderWidth: 1,
-          borderColor: c.border,
+          borderColor: ready ? c.sage : active ? c.copper : c.border,
           borderRadius: 6,
         }}
       >
@@ -48,7 +49,12 @@ export function DownloadButton({ lesson }: { lesson: Lesson }) {
           <Download size={18} color={c.muted} />
         )}
         <Txt style={{ fontSize: 13, color: ready ? c.sage : c.muted }}>{label}</Txt>
-      </Pressable>
+      </MotionPressable>
+      {active && (
+        <View style={{ marginTop: 7 }}>
+          <ProgressBar value={item.received / lesson.asset.bytes} />
+        </View>
+      )}
       {item?.state === 'failed' && (
         <Txt accessibilityRole="alert" style={{ fontSize: 12, color: c.danger, marginTop: 8 }}>
           {item.error}

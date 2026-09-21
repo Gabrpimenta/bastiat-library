@@ -5,15 +5,26 @@ import { Pause, Play, X } from 'lucide-react-native';
 import { colors as c } from '@bastiat/design-tokens';
 import { usePlayer, togglePlayback, stopPlayer } from '../services/player';
 import { Artwork, IconButton, ProgressBar, Txt, type } from './ui';
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
+import { useReducedMotion } from '../services/accessibility';
+import { motion } from './motion';
+
+const playerEnter = FadeIn.duration(motion.state);
+const playerExit = FadeOut.duration(motion.press);
 
 export function MiniPlayer() {
   const player = usePlayer();
   const pathname = usePathname();
   const insets = useSafeAreaInsets();
+  const reduced = useReducedMotion();
   if (!player.lesson || pathname.startsWith('/lesson/')) return null;
   const inTabs = ['/', '/explore', '/library', '/profile'].includes(pathname);
   return (
-    <View style={[styles.container, { bottom: insets.bottom + (inTabs ? 65 : 12) }]}>
+    <Animated.View
+      entering={reduced ? undefined : playerEnter}
+      exiting={reduced ? undefined : playerExit}
+      style={[styles.container, { bottom: insets.bottom + (inTabs ? 65 : 12) }]}
+    >
       <View style={styles.row}>
         <Pressable
           style={styles.content}
@@ -49,7 +60,7 @@ export function MiniPlayer() {
         </IconButton>
       </View>
       <ProgressBar value={player.position / player.duration} />
-    </View>
+    </Animated.View>
   );
 }
 const styles = StyleSheet.create({

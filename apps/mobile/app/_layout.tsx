@@ -73,7 +73,7 @@ export default function RootLayout() {
             screenOptions={{
               headerShown: false,
               contentStyle: { backgroundColor: '#0D171C' },
-              animation: reducedMotion ? 'none' : 'slide_from_right',
+              animation: reducedMotion ? 'none' : 'default',
             }}
           />
           <MiniPlayer />

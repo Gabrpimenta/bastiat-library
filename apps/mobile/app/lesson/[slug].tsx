@@ -34,6 +34,7 @@ import {
   type,
 } from '../../src/components/ui';
 import { DownloadButton } from '../../src/components/download-button';
+import { MotionPressable } from '../../src/components/motion';
 
 export default function LessonScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
@@ -101,7 +102,7 @@ export default function LessonScreen() {
               <Txt style={styles.time}>{timeLabel(lesson.durationSeconds)}</Txt>
             </View>
             <View style={styles.controls}>
-              <Pressable
+              <MotionPressable
                 accessibilityRole="button"
                 accessibilityLabel="Change playback speed"
                 accessibilityState={{ disabled: !active }}
@@ -110,7 +111,7 @@ export default function LessonScreen() {
                 style={styles.speed}
               >
                 <Txt style={{ fontSize: 12 }}>{active ? player.speed : 1}×</Txt>
-              </Pressable>
+              </MotionPressable>
               <IconButton
                 label="Back 15 seconds"
                 disabled={!active}
@@ -121,7 +122,7 @@ export default function LessonScreen() {
                 <RotateCcw size={26} color={c.text} />
                 <Txt style={styles.skipText}>15</Txt>
               </IconButton>
-              <Pressable
+              <MotionPressable
                 accessibilityRole="button"
                 accessibilityLabel={active && player.playing ? 'Pause lesson' : 'Play lesson'}
                 onPress={() =>
@@ -136,7 +137,7 @@ export default function LessonScreen() {
                 ) : (
                   <Play size={30} color={c.background} fill={c.background} />
                 )}
-              </Pressable>
+              </MotionPressable>
               <IconButton
                 label="Forward 15 seconds"
                 disabled={!active}
@@ -161,7 +162,7 @@ export default function LessonScreen() {
               <Txt style={{ fontSize: 11, color: c.muted }}>
                 Synthetic narration{active && player.offline ? ' · Playing offline' : ''}
               </Txt>
-              <Pressable
+              <MotionPressable
                 accessibilityRole="button"
                 accessibilityLabel={
                   progress?.value.completed ? 'Mark incomplete' : 'Mark lesson complete'
@@ -176,7 +177,7 @@ export default function LessonScreen() {
                 <Txt style={{ fontSize: 11, color: c.copper }}>
                   {progress?.value.completed ? 'Completed' : 'Mark complete'}
                 </Txt>
-              </Pressable>
+              </MotionPressable>
             </View>
             <DownloadButton lesson={lesson} />
             {progress?.conflict && (

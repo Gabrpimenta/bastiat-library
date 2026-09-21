@@ -1,0 +1,47 @@
+appId: com.gabrielpimenta.bastiatlibrary
+---
+- openLink: bastiat://profile
+- tapOn:
+    text: Open
+    optional: true
+- tapOn:
+    text: Not Now
+    optional: true
+- scrollUntilVisible:
+    element:
+      id: email
+    direction: DOWN
+- tapOn:
+    id: email
+- eraseText
+- inputText: ${MAESTRO_READER_EMAIL}
+- pressKey: Enter
+- inputText: ${MAESTRO_READER_PASSWORD}
+- pressKey: Enter
+- tapOn:
+    text: Not Now
+    optional: true
+- extendedWaitUntil:
+    visible: Sign out
+    timeout: 20000
+- openLink: bastiat://lesson/the-broken-window
+- tapOn:
+    text: Open
+    optional: true
+- tapOn:
+    text: Not Now
+    optional: true
+- tapOn: Play lesson
+- extendedWaitUntil:
+    visible: Pause lesson
+    timeout: 20000
+- tapOn: Forward 15 seconds
+- tapOn: Forward 15 seconds
+- tapOn: Pause lesson
+- takeScreenshot: native-sync-checkpoint
+- openLink: bastiat://library
+- tapOn:
+    text: Open
+    optional: true
+- tapOn: Sync library
+- assertVisible: Your progress is saved on this device.

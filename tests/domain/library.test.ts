@@ -3,6 +3,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { LibraryController, type KeyValueStore } from '../../packages/contracts/src/library';
 import { decideProgress, resumePosition, verifyAsset } from '../../packages/contracts/src/sync';
 import type { Lesson, Progress, ProgressMutation } from '../../packages/contracts/src';
+import { ApiError } from '../../packages/contracts/src/client';
 
 const lesson: Lesson = {
   kind: 'lesson',
@@ -62,6 +63,29 @@ function server() {
 }
 afterEach(() => vi.useRealTimers());
 describe('account-isolated progress outbox', () => {
+  it('retains pending playback after session expiry and resumes the same operation after login', async () => {
+    vi.useFakeTimers();
+    const api = server();
+    api.progress.mockRejectedValueOnce(new ApiError(401, 'Session expired'));
+    const store = new LibraryController(memory(), api, randomUUID);
+    store.setUser(1);
+    store.saveProgress(lesson, 42);
+    await store.sync();
+    const operation = store.progress(lesson.slug)?.inFlight;
+    expect(store.requiresAuthentication).toBe(true);
+    expect(store.progress(lesson.slug)?.value.positionSeconds).toBe(42);
+    await store.sync();
+    expect(api.progress).toHaveBeenCalledTimes(1);
+    store.setUser(1);
+    await vi.advanceTimersByTimeAsync(1100);
+    await store.sync();
+    expect(store.requiresAuthentication).toBe(false);
+    expect(api.progress.mock.calls[1]?.[0]).toEqual(operation);
+    expect(store.progress(lesson.slug)).toMatchObject({
+      dirty: false,
+      value: { positionSeconds: 42 },
+    });
+  });
   it('does not merge guest or previous-account data into a new account', async () => {
     const api = server();
     const store = new LibraryController(memory(), api, randomUUID);

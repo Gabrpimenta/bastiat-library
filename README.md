@@ -1,10 +1,16 @@
 # Bastiat Library
 
+[![Checks](https://github.com/Gabrpimenta/bastiat-library/actions/workflows/checks.yml/badge.svg)](https://github.com/Gabrpimenta/bastiat-library/actions/workflows/checks.yml)
+
 **Ideas worth thinking through.** An independent learning app by Gabriel Pimenta, with an Expo mobile client, a Next.js web companion and a Payload editorial studio.
 
 Explore one original course, three narrated lessons and two readings. Listen, save your place, download a lesson on mobile, and continue on the web with the same account.
 
-> Development preview. Web and simulator checks are recorded in [QA evidence](docs/qa/VALIDATION.md). Physical-device background audio, accessibility and distribution checks remain release gates. There is no public hosted service or store release yet.
+> Development preview. Physical iPhone media checks and automated evidence are recorded in [QA](docs/qa/VALIDATION.md). Physical Android, full accessibility review and production distribution remain release gates. There is no public hosted service or store release yet.
+
+[Watch the 1:57 demonstration](docs/media/demonstration.mp4) · [Screenshots and recording notes](docs/DEMO.md) · [Build identity](docs/qa/ARTIFACTS.md)
+
+![Bastiat Library web companion](docs/media/web-home.png)
 
 ## Run locally
 
@@ -66,7 +72,7 @@ flowchart LR
 | `content`                | Original editorial material, generated media and license records       |
 | `tests`, `.maestro`      | Domain, API, browser and native test flows                             |
 
-Decisions: [native media](docs/adr/001-native-media.md), [offline synchronization](docs/adr/002-offline-sync.md), [CMS contracts](docs/adr/003-cms-contracts.md).
+Decisions: [native media](docs/adr/001-native-media.md), [offline synchronization](docs/adr/002-offline-sync.md), [CMS contracts](docs/adr/003-cms-contracts.md), [iOS audio source build](docs/adr/004-ios-audio-source-build.md).
 
 ## Validation
 
@@ -77,7 +83,7 @@ pnpm test:e2e      # starts or reuses the local web server
 pnpm build
 ```
 
-API tests write synthetic fixtures and study records. Run them against a disposable development database. Native flows require an installed development build and a reachable API; the offline/restart procedure is documented in [QA](docs/qa/VALIDATION.md). The GitHub workflows define automated gates; [the tracker](docs/IMPLEMENTATION.md) distinguishes configured checks from checks actually run.
+API tests write synthetic fixtures and study records. Run them against a disposable development database. Native flows require an installed development build and a reachable API; the offline/restart procedure is documented in [QA](docs/qa/VALIDATION.md). [GitHub Checks](https://github.com/Gabrpimenta/bastiat-library/actions/workflows/checks.yml) runs the automated gates. The [Android internal QA workflow](https://github.com/Gabrpimenta/bastiat-library/actions/workflows/android.yml) builds a development-signed APK with bundled JavaScript and commit/checksum metadata. Its API origin must be reachable from the test device; it is not a hosted demo. [The tracker](docs/IMPLEMENTATION.md) distinguishes configured checks from checks actually run.
 
 ## Boundaries and trade-offs
 

@@ -1,40 +1,34 @@
 # Current project state
 
-Updated: 21 September 2026, 05:31 UTC. Phase: native acceptance and release evidence. Status: in progress.
+Updated: 21 September 2026. Phase: delivery verification. Status: development preview delivered for review; production release gates remain open.
 
 ## Objective and references
 
-Deliver the implemented learning journey: publish in Payload, play on mobile, keep listening with the screen locked, download and restart offline, then resume on the web with the same account.
+The implemented journey covers Payload publication, mobile learning, locked audio, verified downloads and offline restart, and native-to-web progress in the same account.
 
-Scope and policy: [implementation tracker](IMPLEMENTATION.md). Evidence: [QA report](qa/VALIDATION.md). Decisions: [ADRs](adr/001-native-media.md). Findings: [engineering record](ai/2026-09-21.md).
+Scope and policy: [implementation tracker](IMPLEMENTATION.md). Executable evidence and remaining release gates: [QA](qa/VALIDATION.md). Demonstration: [recording and screenshots](DEMO.md). Builds: [artifact identity](qa/ARTIFACTS.md). Findings: [engineering record](ai/2026-09-21.md).
 
-## Verified baseline
+## Verified application source
 
-- Formatting, lint, type checks and 19 domain/SQLite/player tests passed locally.
-- 11 API integration tests and 4 browser tests passed, including real studio publication and guest playback. A production web rebuild is due after the latest playback change.
-- PostgreSQL initial migration applied, rolled back and reapplied in a disposable database.
-- Native debug builds installed on iOS Simulator and Android Emulator. Android Release APK compiled with bundled JavaScript.
-- iOS Simulator remote audio, seeking, verified download and restart with the API unavailable passed. This is not physical airplane-mode evidence.
-- iOS Simulator locked playback reached 609.984 seconds of the 610-second QA fixture; lock-screen controls were not visible. Playback was stopped.
-- Android Emulator Release APK passed verified download, force-stop and offline playback with airplane mode enabled and Wi-Fi disabled. Connectivity was restored.
-- The initial signed iPhone Release failed at 0:00. After refreshing Pods and compiling Expo Audio from source, both an instrumented build and a clean build advanced on the physical iPhone. See ADR 004; a single upstream root cause has not been established.
-- Latest dependency revisions passed the web production build, iOS JavaScript export and 11 API tests. One version-based moderate audit finding remains for a dependency with a documented local fix.
+- Application source `3c98567` adds 120 ms press feedback, short state transitions, native stack navigation and live reduced-motion support. Tab switches remain immediate.
+- Formatting, lint, types, 20 domain tests, 11 API tests, 5 browser tests, production web build and iOS JavaScript export passed remotely for that revision.
+- Native-to-web resume passed: real iOS Simulator SQLite checkpoint 64.6597 seconds, fresh authenticated browser 65 seconds.
+- Physical iPhone 16: the earlier clean Release completed 609.984 seconds while locked; the owner confirmed external pause/resume. The updated Release passed offline force-close/reopen, headphone disconnection and Siri interruption through owner confirmation. Playback was left paused.
+- Android Emulator Release: fresh verified download, offline process restart, playback and reduced-motion interaction checks passed. The device owner deferred physical Android testing; do not ask again in this session.
+- The temporary long-audio and publication server fixtures have been removed. The final catalog has one course, three lessons and two readings.
+- A 1:57 edited demonstration and actual screenshots are in docs/media. No credentials, private application documents or provisioning information are included.
+- Local Android APK and SHA-256 metadata are retained under .local/artifacts/3c98567. The separate Android CI build uses the same application source and its own generated signing key.
 
-## Active work
+## Delivery
 
-- Physical iPhone clean-build locked test started at **05:29:49.887 UTC**, with the player at 0:00 and iPhone Mirroring quit. Do not reopen or interrupt it before 05:39:50 UTC. Observe checkpoints through a copied app SQLite database. The owner confirmed hearing narration and seeing lock-screen controls; their operation is still pending.
-- Largest Dynamic Type sign-in flow passed and normal size was restored. Reduced Motion handling and measured input contrast were added; native preference toggles remain pending.
-- The device owner deferred physical Android testing. Keep emulator and physical results separate; do not ask again this session.
-- Complete physical media, interruption, accessibility and native-to-web resume checks, then remove the temporary ten-minute QA lesson.
-- Record screenshots/demo, checks, actual commits, artifact hashes and remote CI.
+Repository: https://github.com/Gabrpimenta/bastiat-library. Branch: delivery/verified-preview. Draft PR: https://github.com/Gabrpimenta/bastiat-library/pull/1.
+
+The final recording and documentation were inspected. The Android CI build passed and its downloaded artifact matched its SHA-256. The draft PR contains the final changes and evidence. Later documentation commits do not change the application source associated with existing native builds.
+
+## Remaining release scope
+
+Physical Android, complete VoiceOver/TalkBack acceptance, representative-device performance profiling and maintainer review remain open. There is no public HTTPS service, store distribution or wider iOS provisioning. These are separate release gates, not claims inferred from passing automated checks.
 
 ## Decisions and constraints
 
-- Internal QA uses the local API; no public service or store distribution exists.
-- Device results must name actual hardware and build. Simulator results stay separate.
-- Keep private application materials, credentials, device identifiers and local logs out of the repository.
-- Follow compact state and evidence practices adapted from GSD; no framework installation or model/configuration change.
-
-## Resume procedure
-
-Inspect live build logs and connected devices before restarting work. Use the QA matrix to choose the first incomplete acceptance criterion. Update this file after meaningful outcomes; retain detailed evidence in the QA report. Never infer approval or a passing test from silence.
+Use the approved scope and AI contribution policy. Keep private application materials, credentials, device identifiers and local logs out of the repository. Follow the compact state and outcome-to-evidence practices adapted from GSD; no global framework or model configuration change was made. Never infer a passing device result from silence.
