@@ -26,10 +26,12 @@ Operational commands and package boundaries are maintained in [AGENTS.md](../AGE
 - [x] Implement mobile screens, native players, SQLite, downloads and synchronization.
 - [x] Implement the Next.js companion and shared progress.
 - [x] Run local domain, SQLite migration, API, browser and production web checks.
-- [ ] Complete native media acceptance on physical iPhone and Android.
-- [ ] Finish accessibility, performance and cross-client native QA.
-- [ ] Prepare commit-associated builds, screenshots and the demonstration video.
-- [ ] Publish the repository and verify remote CI.
+- [x] Complete physical iPhone media acceptance: locked duration/controls, offline restart, headphone disconnection and Siri interruption.
+- [ ] Complete physical Android media acceptance; deferred by the owner.
+- [x] Verify native-to-web resume and selected large-text, contrast and reduced-motion behavior.
+- [ ] Complete screen-reader and representative-hardware performance review.
+- [x] Prepare commit-associated builds, screenshots and the demonstration video.
+- [x] Publish the repository and verify application Checks and Android build CI for `3c98567`.
 
 Completed implementation is distinct from completed acceptance. The executable evidence and remaining gaps are in [QA validation](qa/VALIDATION.md). Read [current state](STATE.md) first when resuming work.
 
