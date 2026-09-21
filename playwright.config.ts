@@ -9,6 +9,11 @@ export default defineConfig({
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL: process.env.TEST_BASE_URL ?? 'http://localhost:3000',
+    // Keep the Mac's hardware media commands out of headless playback assertions.
+    // External-control acceptance is a separate native-device test.
+    launchOptions: {
+      args: process.platform === 'darwin' ? ['--disable-features=HardwareMediaKeyHandling'] : [],
+    },
     trace: 'off',
     screenshot: 'only-on-failure',
   },

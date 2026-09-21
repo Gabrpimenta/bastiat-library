@@ -338,7 +338,10 @@ export function Providers({ children }: { children: ReactNode }) {
     },
     seek(position) {
       if (!media.current) return;
-      media.current.currentTime = Math.max(0, Math.min(position, player.duration));
+      const next = Math.max(0, Math.min(position, player.duration));
+      media.current.currentTime = next;
+      // A controlled range must acknowledge input before the next native timeupdate event.
+      setPlayer((current) => ({ ...current, position: next }));
       checkpoint();
     },
     speed(value) {

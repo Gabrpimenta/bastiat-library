@@ -20,6 +20,8 @@ Set `APP_ENV=production` and an HTTPS `EXPO_PUBLIC_API_URL` before prebuild. Inc
 
 Verify installation and launch without Metro for a preview/release artifact. Record its SHA-256, source commit, runtime, API environment, device/OS and executed tests. Store signing material in the platform’s protected secret store and follow configured environment approvals.
 
+Keep Xcode's normal simulator code signing enabled when testing authentication. An unsigned app can launch and play media while SecureStore fails with a missing Keychain entitlement. Apple documents how the [application identifier contributes to Keychain access](https://developer.apple.com/documentation/security/sharing-access-to-keychain-items-among-a-collection-of-apps). A media-only simulator pass does not establish successful session storage.
+
 The manual Android internal QA workflow accepts an API origin reachable from the device and produces a Release configuration APK with bundled JavaScript, a SHA-256 checksum and build metadata tied to the actual source commit. It uses the generated development signing key. The default origin targets an Android emulator's host; physical devices require a reachable LAN or HTTPS API origin. This workflow does not establish physical-device acceptance or store readiness.
 
 ## Local schema recovery
