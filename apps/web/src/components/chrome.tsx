@@ -42,7 +42,11 @@ export function Header() {
         <Link href="/explore" className="icon-button" aria-label="Search the library">
           <Search size={21} />
         </Link>
-        <Link href="/profile" className="account-button">
+        <Link
+          href="/profile"
+          className="account-button"
+          aria-label={user ? 'Open profile' : 'Sign in'}
+        >
           <User size={18} />
           <span>{user ? user.name.split(' ')[0] : 'Sign in'}</span>
         </Link>

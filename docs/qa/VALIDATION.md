@@ -68,6 +68,10 @@ Dependency findings and mitigation are in [the dependency review](DEPENDENCIES.m
 
 The 21 September polish uses 120 ms press feedback and 180–220 ms state/entrance transitions, with live system reduced-motion support on native and `prefers-reduced-motion` on web. Tab switches stay immediate and stack navigation uses platform transitions. Formatting, lint, types, 20 domain tests and all five browser scenarios passed locally after this change. The native-to-web flow also passed with the new controls. Browser inspection measured the active button transform as `matrix(0.97, 0, 0, 0.97, 0, 0)`; reduced motion removed the transform and changed its transition duration to `0s`. Android Release interactions passed with system reduced motion on. No frame-rate benchmark or slow physical Android performance claim is made.
 
+## Responsive visual review
+
+The later [web and native visual review](VISUAL_REVIEW.md) records the current layout changes, browser coverage, simulator-only scope and screenshots. This pass adds three responsive browser regressions (eight browser scenarios total) and a reproducible native screen tour. Earlier physical-device and artifact records remain tied to their stated revisions.
+
 ## Remaining release gates
 
 - Physical Android acceptance, deferred by the owner; extended navigation and performance profiling on representative hardware.

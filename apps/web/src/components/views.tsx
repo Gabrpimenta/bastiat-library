@@ -197,7 +197,6 @@ export function ExploreView({ initialQuery = '' }: { initialQuery?: string }) {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
         />
-        <kbd>⌕</kbd>
       </div>
       <div className="filters" aria-label="Content format">
         {[

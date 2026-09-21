@@ -1,3 +1,4 @@
+import { s as layout } from '../../src/components/ui';
 import { ScrollView, View, Pressable, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
@@ -24,9 +25,11 @@ export default function ReadingScreen() {
   });
   const article = result.data?.kind === 'article' ? result.data : null;
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+    <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
       <BackBar label="Readings" />
-      <ScrollView contentContainerStyle={{ padding: 24, paddingTop: 5, paddingBottom: 160 }}>
+      <ScrollView
+        contentContainerStyle={[layout.page, { padding: 24, paddingTop: 5, paddingBottom: 160 }]}
+      >
         {result.error ? (
           <ErrorView
             message={result.error.message}
@@ -54,7 +57,7 @@ export default function ReadingScreen() {
                 paddingBottom: 8,
               }}
             >
-              <Txt style={{ fontSize: 12, color: c.muted }}>
+              <Txt style={{ flex: 1, fontSize: 12, color: c.muted }}>
                 {article.author} · {article.readingMinutes} min read
               </Txt>
               <SaveButton item={article} />

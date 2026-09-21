@@ -1,0 +1,74 @@
+appId: com.gabrielpimenta.bastiatlibrary
+---
+- launchApp
+- extendedWaitUntil:
+    visible: Bastiat Library home
+    timeout: 30000
+- openLink: bastiat://
+- waitForAnimationToEnd
+- extendedWaitUntil:
+    visible: 'Bastiat Library home'
+    timeout: 30000
+- tapOn: Bastiat Library home
+- waitForAnimationToEnd
+- takeScreenshot: home
+- swipe:
+    direction: UP
+- waitForAnimationToEnd
+- takeScreenshot: home-lower
+- openLink: bastiat://explore
+- extendedWaitUntil:
+    visible: 'Follow a question.'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: explore
+- openLink: bastiat://course/the-seen-and-the-unseen
+- extendedWaitUntil:
+    visible: 'A GUIDED INTRODUCTION'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: course
+- swipe:
+    direction: UP
+- waitForAnimationToEnd
+- takeScreenshot: course-lower
+- openLink: bastiat://lesson/the-broken-window
+- extendedWaitUntil:
+    visible: 'Play lesson'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: lesson
+- swipe:
+    direction: UP
+- waitForAnimationToEnd
+- takeScreenshot: lesson-lower
+- openLink: bastiat://lesson/thinking-in-alternatives
+- extendedWaitUntil:
+    visible: 'Thinking in alternatives'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: video
+- openLink: bastiat://reading/trade-and-cooperation
+- extendedWaitUntil:
+    visible: 'EXCHANGE & COOPERATION · READING'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: reading
+- openLink: bastiat://library
+- extendedWaitUntil:
+    visible: 'YOUR COLLECTION'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: library
+- openLink: bastiat://profile
+- extendedWaitUntil:
+    visible: 'YOUR SPACE'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: profile
+- openLink: bastiat://about
+- extendedWaitUntil:
+    visible: 'ABOUT & PRIVACY'
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: about

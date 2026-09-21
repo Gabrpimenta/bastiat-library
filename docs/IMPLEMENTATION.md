@@ -26,6 +26,7 @@ Operational commands and package boundaries are maintained in [AGENTS.md](../AGE
 - [x] Implement mobile screens, native players, SQLite, downloads and synchronization.
 - [x] Implement the Next.js companion and shared progress.
 - [x] Run local domain, SQLite migration, API, browser and production web checks.
+- [x] Review responsive web and native layouts in browsers and simulators; fix spacing, alignment, text wrapping and media proportions.
 - [x] Complete physical iPhone media acceptance: locked duration/controls, offline restart, headphone disconnection and Siri interruption.
 - [ ] Complete physical Android media acceptance; deferred by the owner.
 - [x] Verify native-to-web resume and selected large-text, contrast and reduced-motion behavior.

@@ -1,3 +1,4 @@
+import { s as layout } from '../../src/components/ui';
 import { useState } from 'react';
 import { View, ScrollView, Pressable, StyleSheet, Linking, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -50,9 +51,11 @@ export default function LessonScreen() {
   const progress = lib.progress(slug);
   const position = active ? player.position : (progress?.value.positionSeconds ?? 0);
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+    <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
       <BackBar label="The Seen and the Unseen" />
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 75 }}>
+      <ScrollView
+        contentContainerStyle={[layout.page, { paddingHorizontal: 24, paddingBottom: 75 }]}
+      >
         {result.error ? (
           <ErrorView
             message={result.error.message}
@@ -251,8 +254,7 @@ export default function LessonScreen() {
 const styles = StyleSheet.create({
   art: {
     width: '100%',
-    height: 260,
-    aspectRatio: undefined,
+    aspectRatio: 1280 / 880,
     borderRadius: 10,
     overflow: 'hidden',
     backgroundColor: c.surface,
@@ -261,6 +263,9 @@ const styles = StyleSheet.create({
   times: { flexDirection: 'row', justifyContent: 'space-between' },
   time: { fontSize: 11, color: c.muted, fontVariant: ['tabular-nums'] },
   controls: {
+    width: '100%',
+    maxWidth: 360,
+    alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

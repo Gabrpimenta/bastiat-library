@@ -1,6 +1,6 @@
 # Current project state
 
-Updated: 21 September 2026. Phase: delivery verification. Status: development preview delivered for review; production release gates remain open.
+Updated: 21 September 2026. Phase: responsive visual review. Status: layout refinements verified in browsers and simulators; production release gates remain open.
 
 ## Objective and references
 
@@ -8,7 +8,13 @@ The implemented journey covers Payload publication, mobile learning, locked audi
 
 Scope and policy: [implementation tracker](IMPLEMENTATION.md). Executable evidence and remaining release gates: [QA](qa/VALIDATION.md). Demonstration: [recording and screenshots](DEMO.md). Builds: [artifact identity](qa/ARTIFACTS.md). Findings: [engineering record](ai/2026-09-21.md).
 
-## Verified application source
+## Latest visual review
+
+The web and native layouts received a conservative spacing and sizing pass. The web player no longer clips its Save action at 320 px. Tablet grids, card alignment, native text wrapping, safe areas and media proportions were refined without changing the visual identity. Chromium and WebKit were checked at four widths, and iPhone/iPad Simulators and Android Emulator were reviewed. No physical device was used in this pass.
+
+Local format/lint/types, 20 domain tests, 8 browser tests, production web build and Android Release build passed. See the [visual review and screenshots](qa/VISUAL_REVIEW.md). Existing physical acceptance and old build identities below remain tied to their recorded source revisions.
+
+## Earlier verified application source
 
 - Application source `3c98567` adds 120 ms press feedback, short state transitions, native stack navigation and live reduced-motion support. Tab switches remain immediate.
 - Formatting, lint, types, 20 domain tests, 11 API tests, 5 browser tests, production web build and iOS JavaScript export passed remotely for that revision.
@@ -21,9 +27,9 @@ Scope and policy: [implementation tracker](IMPLEMENTATION.md). Executable eviden
 
 ## Delivery
 
-Repository: https://github.com/Gabrpimenta/bastiat-library. Branch: delivery/verified-preview. Draft PR: https://github.com/Gabrpimenta/bastiat-library/pull/1.
+Repository: https://github.com/Gabrpimenta/bastiat-library. Previous delivery: https://github.com/Gabrpimenta/bastiat-library/pull/1 (merged). Current visual review branch: `fix/responsive-layout-review`.
 
-The final recording and documentation were inspected. The Android CI build passed and its downloaded artifact matched its SHA-256. The draft PR contains the final changes and evidence. Later documentation commits do not change the application source associated with existing native builds.
+The final recording and documentation were inspected. The Android CI build passed and its downloaded artifact matched its SHA-256. The merged delivery PR contains that earlier source and evidence. Later documentation commits do not change the application source associated with existing native builds.
 
 ## Remaining release scope
 

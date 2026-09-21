@@ -1,3 +1,4 @@
+import { s as layout } from '../../src/components/ui';
 import { useRef, useState } from 'react';
 import {
   ScrollView,
@@ -61,7 +62,7 @@ export default function ProfileScreen() {
         <ScrollView
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="on-drag"
-          contentContainerStyle={{ padding: 24, paddingBottom: 165 }}
+          contentContainerStyle={[layout.page, { padding: 24, paddingBottom: 165 }]}
         >
           <Eyebrow>YOUR SPACE</Eyebrow>
           <View style={{ marginTop: 9, marginBottom: 23 }}>
@@ -165,7 +166,7 @@ export default function ProfileScreen() {
               onPress={() => router.push('/about')}
               style={styles.link}
             >
-              <Txt style={{ fontSize: 14 }}>About the library & privacy</Txt>
+              <Txt style={{ flex: 1, fontSize: 14 }}>About the library & privacy</Txt>
               <ArrowUpRight size={18} color={c.copper} />
             </Pressable>
             <Txt style={[styles.description, { fontSize: 11, marginTop: 20 }]}>
@@ -204,6 +205,7 @@ const styles = StyleSheet.create({
   },
   panel: { marginVertical: 28, padding: 21, backgroundColor: c.surface, borderRadius: 7 },
   link: {
+    gap: 12,
     minHeight: 52,
     borderBottomWidth: 1,
     borderBottomColor: c.border,
