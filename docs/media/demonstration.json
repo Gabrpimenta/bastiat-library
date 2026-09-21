@@ -1,0 +1,66 @@
+{
+  "title": "Bastiat Library demonstration",
+  "recordedOn": "2026-09-21",
+  "file": "demonstration.mp4",
+  "sha256": "537842497060cc3590d57ecadadf26036f243373543d0e38a0e4ce649ccd5f0d",
+  "bytes": 2633958,
+  "durationSeconds": 94.5,
+  "width": 1920,
+  "height": 1080,
+  "framesPerSecond": 30,
+  "audio": false,
+  "sources": {
+    "webCommit": "095d22dcbca6143646ef94ee23ed20333224fcd0",
+    "androidCommit": "e43fefaa836f67531d6ca521b1c549231f059559",
+    "androidApkSha256": "e89f474bf564bf4af9ac61367b98cb66519234c93f01474175b4343397ce4366"
+  },
+  "environment": "Local Next.js development server and Android API 36.1 Emulator Release build. No physical-device footage.",
+  "editing": "Normal-speed application screen captures, chapter captions, brief fades and cuts. Startup waits and selected idle time omitted.",
+  "chapters": [
+    {
+      "title": "Ideas worth thinking through.",
+      "startSeconds": 0,
+      "durationSeconds": 4
+    },
+    {
+      "title": "Explore the web collection",
+      "startSeconds": 4,
+      "durationSeconds": 15.5
+    },
+    {
+      "title": "Publish through the editorial studio",
+      "startSeconds": 19.5,
+      "durationSeconds": 11.5
+    },
+    {
+      "title": "Browse on mobile",
+      "startSeconds": 31,
+      "durationSeconds": 14
+    },
+    {
+      "title": "Download and verify a lesson",
+      "startSeconds": 45,
+      "durationSeconds": 16.5
+    },
+    {
+      "title": "Native playback and seeking",
+      "startSeconds": 61.5,
+      "durationSeconds": 5.5
+    },
+    {
+      "title": "Play after an offline restart",
+      "startSeconds": 67,
+      "durationSeconds": 14.5
+    },
+    {
+      "title": "Continue with the same account",
+      "startSeconds": 81.5,
+      "durationSeconds": 8
+    },
+    {
+      "title": "Made to keep you curious.",
+      "startSeconds": 89.5,
+      "durationSeconds": 5
+    }
+  ]
+}

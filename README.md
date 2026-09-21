@@ -6,9 +6,9 @@
 
 Explore one original course, three narrated lessons and two readings. Listen, save your place, download a lesson on mobile, and continue on the web with the same account.
 
-> Development preview. Physical iPhone media checks and automated evidence are recorded in [QA](docs/qa/VALIDATION.md). Physical Android, full accessibility review and production distribution remain release gates. There is no public hosted service or store release yet.
+> Development preview. Physical iPhone media checks and automated evidence are recorded in [QA](docs/qa/VALIDATION.md). Physical Android, full accessibility review and production distribution remain release gates. The preview is available as a recorded demo and a local setup. Live hosting is deferred until a live demonstration is requested.
 
-[Watch the 1:57 demonstration](docs/media/demonstration.mp4) · [Screenshots and recording notes](docs/DEMO.md) · [Build identity](docs/qa/ARTIFACTS.md)
+[Watch the 1:35 demonstration](docs/media/demonstration.mp4) · [Screenshots and recording notes](docs/DEMO.md) · [Build identity](docs/qa/ARTIFACTS.md)
 
 ![Bastiat Library web companion](docs/media/web-home.png)
 

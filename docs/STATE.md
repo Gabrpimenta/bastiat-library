@@ -1,12 +1,18 @@
 # Current project state
 
-Updated: 21 September 2026. Phase: responsive visual review. Status: layout refinements verified in browsers and simulators; production release gates remain open.
+Updated: 21 September 2026. Phase: demo delivery. Status: merged visual refinements and refreshed recorded preview; live hosting deferred until there is interest in a live demonstration.
 
 ## Objective and references
 
 The implemented journey covers Payload publication, mobile learning, locked audio, verified downloads and offline restart, and native-to-web progress in the same account.
 
 Scope and policy: [implementation tracker](IMPLEMENTATION.md). Executable evidence and remaining release gates: [QA](qa/VALIDATION.md). Demonstration: [recording and screenshots](DEMO.md). Builds: [artifact identity](qa/ARTIFACTS.md). Findings: [engineering record](ai/2026-09-21.md).
+
+## Latest demo delivery
+
+The demonstration and primary README screenshots now show the merged visual refinements and restored studio dashboard. Current Android build identity is recorded alongside the older physical iPhone evidence. Fresh Android Emulator capture verified download and offline force-stop/reopen; the web player was compared against existing synchronized simulator progress. See [recording notes](DEMO.md) and [refresh verification](qa/DEMO_REFRESH.md).
+
+Use the recorded demo and local setup as the review package. Do not start web/API hosting unless it is requested after interest in a live demonstration. Hosting is not an outstanding blocker for this delivery.
 
 ## Latest visual review
 
@@ -22,18 +28,18 @@ Local format/lint/types, 20 domain tests, 8 browser tests, production web build 
 - Physical iPhone 16: the earlier clean Release completed 609.984 seconds while locked; the owner confirmed external pause/resume. The updated Release passed offline force-close/reopen, headphone disconnection and Siri interruption through owner confirmation. Playback was left paused.
 - Android Emulator Release: fresh verified download, offline process restart, playback and reduced-motion interaction checks passed. The device owner deferred physical Android testing; do not ask again in this session.
 - The temporary long-audio and publication server fixtures have been removed. The final catalog has one course, three lessons and two readings.
-- A 1:57 edited demonstration and actual screenshots are in docs/media. No credentials, private application documents or provisioning information are included.
+- The original delivery included a 1:57 edited demonstration, since replaced by the current refresh in docs/media. No credentials, private application documents or provisioning information are included.
 - Local Android APK and SHA-256 metadata are retained under .local/artifacts/3c98567. The separate Android CI build uses the same application source and its own generated signing key.
 
 ## Delivery
 
-Repository: https://github.com/Gabrpimenta/bastiat-library. Previous delivery: https://github.com/Gabrpimenta/bastiat-library/pull/1 (merged). Current visual review: https://github.com/Gabrpimenta/bastiat-library/pull/2, branch `fix/responsive-layout-review`.
+Repository: https://github.com/Gabrpimenta/bastiat-library. Previous delivery: https://github.com/Gabrpimenta/bastiat-library/pull/1 (merged). Visual review: https://github.com/Gabrpimenta/bastiat-library/pull/2 (merged as `095d22d`). Main-branch CI passed 39 tests and build checks. Demo-refresh branch: `docs/refresh-demo`.
 
 The final recording and documentation were inspected. The Android CI build passed and its downloaded artifact matched its SHA-256. The merged delivery PR contains that earlier source and evidence. Later documentation commits do not change the application source associated with existing native builds.
 
 ## Remaining release scope
 
-Physical Android, complete VoiceOver/TalkBack acceptance, representative-device performance profiling and maintainer review remain open. There is no public HTTPS service, store distribution or wider iOS provisioning. These are separate release gates, not claims inferred from passing automated checks.
+Physical Android, complete VoiceOver/TalkBack acceptance, representative-device performance profiling and maintainer review remain open. Public HTTPS hosting is intentionally deferred. Store distribution and wider iOS provisioning are outside the recorded-demo delivery. Production acceptance remains separate from the passing automated checks.
 
 ## Decisions and constraints
 

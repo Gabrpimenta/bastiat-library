@@ -1,18 +1,40 @@
 # Demonstration
 
-[Watch the 1 minute 57 second demonstration](media/demonstration.mp4).
+[Watch the 1 minute 35 second demonstration](media/demonstration.mp4).
 
-The video uses actual screen captures from application source `3c98567`: the local Next.js companion and Payload studio, and an Android Emulator running a Release configuration APK with bundled JavaScript. It is silent, edited, and presented at normal speed. Chapter titles and cuts are added; startup waits are omitted. This is a development preview using a local API.
+[![Watch the refreshed Bastiat Library demonstration](media/demonstration-poster.jpg)](media/demonstration.mp4)
 
-The studio publishes a temporary draft that reuses the project's original narration, then the web opens that published lesson. The Android clips show the seeded course, playback, a newly verified download, and playback after a process restart in airplane mode with Wi-Fi disabled. Those Android clips use guest data. The web resume clip uses the same synthetic account as the separately verified iOS Simulator checkpoint. The closing card reports separate physical iPhone tests; it is not a recording of those tests. See [the evidence report](qa/VALIDATION.md) for devices, build revisions, failures and remaining checks.
+A recorded walkthrough of Bastiat Library: explore the web collection, publish a lesson in the editorial studio, browse and download on mobile, listen after an offline restart, and continue with saved progress on the web.
 
-Temporary server lessons were removed after validation. No demo credentials, device identifiers or provisioning profiles are included in the recording or repository.
+The preview runs locally. Public web/API hosting is deferred until there is interest in a live demonstration. The repository and this recording are the current review package; [local setup](../README.md#run-locally) remains available.
 
-## Latest visual pass
+## Recording notes
 
-[Updated web and native screenshots](qa/VISUAL_REVIEW.md) show the subsequent responsive layout review. The video and original screenshots below still document application source `3c98567`.
+Refreshed on 21 September 2026 after the responsive visual review was merged. Web and studio captures use source [`095d22d`](https://github.com/Gabrpimenta/bastiat-library/commit/095d22dcbca6143646ef94ee23ed20333224fcd0). Android captures use the Release APK from `e43fefa`, whose mobile and shared-package source matches that merge. See [build identity](qa/ARTIFACTS.md).
 
-## Original delivery screenshots
+The 1920 × 1080 video is silent, edited, and presented at normal interaction speed. Chapter captions, short fades and cuts are added; startup waits and some idle time are omitted. Every application screen is a real capture. No physical device was used for this refresh.
+
+- The studio publishes a temporary draft using the project's original narration, then opens its published page. The fixture was removed afterward.
+- Android Emulator footage shows a fresh verified download, native playback and seeking, and downloaded playback after force-stopping and reopening with airplane mode enabled and Wi-Fi disabled. These clips use guest data. Connectivity and volume were restored, and playback was stopped.
+- The web resume clip uses the synthetic account with an existing synchronized iOS Simulator checkpoint. Before recording, the current web player resumed at 74 seconds, matching the stored native checkpoint of 74.365 seconds. This is a fresh comparison of existing progress, not a new recording of native-to-web synchronization. The earlier end-to-end synchronization test is documented in [QA](qa/VALIDATION.md).
+
+No passwords, tokens, device identifiers or provisioning profiles are included. Physical iPhone acceptance remains separate historical evidence. See [refresh verification](qa/DEMO_REFRESH.md) for capture checks and limitations.
+
+## Chapters
+
+| Time | Scene                                          |
+| ---- | ---------------------------------------------- |
+| 0:00 | Introduction                                   |
+| 0:04 | Web collection, course, search and reading     |
+| 0:20 | Editorial dashboard and real draft publication |
+| 0:31 | Native collection and course                   |
+| 0:45 | Fresh media download and verification          |
+| 1:02 | Native playback and seeking                    |
+| 1:07 | Playback after an offline restart              |
+| 1:22 | Resume saved progress on the web               |
+| 1:30 | Repository and closing card                    |
+
+## Current screenshots
 
 ![Web collection](media/web-home.png)
 
@@ -24,6 +46,10 @@ Temporary server lessons were removed after validation. No demo credentials, dev
 | -------------------------------------------------------------------- | ------------------------------------------------------------ |
 | ![Downloaded media in the native library](media/native-download.png) | ![Local playback in airplane mode](media/native-offline.png) |
 
-![Web resumes native progress](media/web-resume.png)
+![Web resumes saved native progress](media/web-resume.png)
+
+![Editorial dashboard](media/editorial-dashboard.png)
 
 ![Published lesson in the Payload studio](media/editorial-studio.png)
+
+See the [compact web player](media/web-compact.png) and [visual review](qa/VISUAL_REVIEW.md) for additional screenshots, screen coverage and responsive-layout checks.
