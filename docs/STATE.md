@@ -10,7 +10,7 @@ Scope and policy: [implementation tracker](IMPLEMENTATION.md). Executable eviden
 
 ## Latest visual review
 
-The web and native layouts received a conservative spacing and sizing pass. The web player no longer clips its Save action at 320 px. Tablet grids, card alignment, native text wrapping, safe areas and media proportions were refined without changing the visual identity. Chromium and WebKit were checked at four widths, and iPhone/iPad Simulators and Android Emulator were reviewed. No physical device was used in this pass.
+The web and native layouts received a conservative spacing and sizing pass. The web player no longer clips its Save action at 320 px. Tablet grids, card alignment, native text wrapping, safe areas and media proportions were refined without changing the visual identity. Chromium and WebKit were checked at four widths, and iPhone/iPad Simulators and Android Emulator were reviewed. The studio dashboard collection cards were restored by regenerating Payload’s missing import map. No physical device was used in this pass.
 
 Local format/lint/types, 20 domain tests, 8 browser tests, production web build and Android Release build passed. See the [visual review and screenshots](qa/VISUAL_REVIEW.md). Existing physical acceptance and old build identities below remain tied to their recorded source revisions.
 
@@ -27,7 +27,7 @@ Local format/lint/types, 20 domain tests, 8 browser tests, production web build 
 
 ## Delivery
 
-Repository: https://github.com/Gabrpimenta/bastiat-library. Previous delivery: https://github.com/Gabrpimenta/bastiat-library/pull/1 (merged). Current visual review branch: `fix/responsive-layout-review`.
+Repository: https://github.com/Gabrpimenta/bastiat-library. Previous delivery: https://github.com/Gabrpimenta/bastiat-library/pull/1 (merged). Current visual review: https://github.com/Gabrpimenta/bastiat-library/pull/2, branch `fix/responsive-layout-review`.
 
 The final recording and documentation were inspected. The Android CI build passed and its downloaded artifact matched its SHA-256. The merged delivery PR contains that earlier source and evidence. Later documentation commits do not change the application source associated with existing native builds.
 

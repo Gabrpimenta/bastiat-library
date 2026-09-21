@@ -8,11 +8,14 @@ At 320 px the web lesson panel clipped its Save button. The controls now fit ins
 
 Native screens share a 24-point gutter and a bounded tablet reading width. The home artwork card grows with its text, detail media uses the video's aspect ratio, and detail screens respect the bottom safe area. Text wraps beside icons and actions. The learning-path heading and count stack at larger font sizes; empty states, downloads and the mini-player have more consistent spacing. The missing-page screen can scroll with large text. The existing palette, illustrations and restrained motion are retained.
 
+The editorial studio review also found a blank dashboard: the checked-in Payload import map was empty. Regenerating it restored the collection cards. The publishing test now opens Lessons through its dashboard card before editing a draft, so this failure is covered by the existing acceptance scenario.
+
 ## Executed checks
 
 | Surface                                | Coverage                                                                                                                                   | Result                                                                                                         |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
 | Chromium and WebKit                    | Home, Explore, course, audio lesson, video lesson, reading, Library, Profile, About, Privacy and missing page at 320, 390, 820 and 1440 px | 88 route/width/browser combinations captured; no horizontal overflow or off-screen elements in the bounds scan |
+| Editorial studio                       | Dashboard, lesson list and lesson editor at 390 and 1440 px                                                                                | Passed after restoring the generated collection-card map; no document overflow                                 |
 | Web interactions                       | Player control bounds and saving at 320, 390 and 820 px; empty search, invalid sign-in recovery, paused mini-player                        | Passed; 3 persistent responsive regression tests added                                                         |
 | iPhone 17 Pro Simulator, iOS 26.5      | Main tabs, course, audio/video lesson layouts, reading and About; signed-in Profile                                                        | Passed                                                                                                         |
 | iPhone Simulator, largest Dynamic Type | Learning-path heading/count, player controls and library sync row                                                                          | Passed after stacking the heading/count; body text scaling remains enabled                                     |
@@ -33,5 +36,7 @@ The raw captures and logs are retained locally under `.local/visual-review/`. Th
 | Compact web player                                    | Android Release home                              | Android Release player                                |
 | ----------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------- |
 | ![320 px web player](../media/review-web-compact.png) | ![Android home](../media/review-android-home.png) | ![Android player](../media/review-android-lesson.png) |
+
+![Restored editorial studio dashboard](../media/review-studio.png)
 
 This is a visual and interaction review, not a complete screen-reader or physical-device performance audit.

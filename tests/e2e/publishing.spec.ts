@@ -52,6 +52,8 @@ test('an editor publishes a draft lesson in the studio and a guest can study it'
     await page.getByLabel('Password', { exact: true }).fill(password);
     await page.getByRole('button', { name: 'Login', exact: true }).click();
     await expect(page).toHaveURL(/\/admin$/);
+    await page.getByRole('link', { name: 'Show all Lessons', exact: true }).click();
+    await expect(page).toHaveURL(/\/admin\/collections\/lessons(?:\?|$)/);
     await page.goto(`/admin/collections/lessons/${id}`);
     await page.getByRole('button', { name: 'Publish changes', exact: true }).click();
     await expect
